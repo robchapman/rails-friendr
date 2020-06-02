@@ -1,7 +1,7 @@
 class Booking < ApplicationRecord
   belongs_to :friend
   belongs_to :user
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
 
   validates :name, presence: true
   validates :total_price, presence: true, numericality: { only_float: true }
