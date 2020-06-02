@@ -6,7 +6,7 @@ class DashboardsController < ApplicationController
     @bookings = current_user.bookings
   end
 
-  def my_list
+  def my_friernd
     @friends = current_user.friends
   end
 end

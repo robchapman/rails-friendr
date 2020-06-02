@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resource :dashboard, only: :show do
     collection do
       get :my_bookings
-      get :my_lists
+      get :my_friends
     end
   end
 end
