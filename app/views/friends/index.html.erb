@@ -1,14 +1,14 @@
-<h1>Browse our friends</h1>
+<h1>Browse friends</h1>
+<div class="d-flex justify-content-between">
 <% @friends.each do |friend| %>
     <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="..." alt="Card image cap">
+      <img class="card-img-top" src="https://source.unsplash.com/random" alt="Card image cap">
       <div class="card-body">
         <h5 class="card-title"><%= friend.name %></h5>
         <p class="card-text"><%= friend.description %></p>
-        <p class="card-text"><%= friend.price %></p>
-        <p class="card-text"><%= friend.location %></p>
+        <p class="card-text">$<%= friend.price %> per day <i class="fas fa-map-marker"> </i><%=  friend.location %></p>
         <a href="#" class="btn btn-primary">Book Now</a>
       </div>
     </div>
   <% end %>
-
+</div>
