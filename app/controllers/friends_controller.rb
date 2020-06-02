@@ -5,17 +5,24 @@ class FriendsController < ApplicationController
 
   def show
     @friend = Friend.find(params[:id])
-    
+
   def new
     @friend = Friend.new
   end
 
   def create
-    @friend = Friend.new
+    @friend = Friend.new(friend_params)
       if @friend.save
         redirect_to friend_path(@friend)
       else
         render 'new'
       end
+  end
+
+  private
+    def friend_params
+    params.require(:friend).permit(:name, :description, :photo, :price, :location)
+  end
+
   end
 end
