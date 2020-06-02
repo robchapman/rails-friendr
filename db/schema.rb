@@ -1,3 +1,4 @@
+
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,10 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_01_065039) do
+ActiveRecord::Schema.define(version: 2020_06_02_014603) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bookings", force: :cascade do |t|
+    t.bigint "friend_id", null: false
+    t.bigint "user_id", null: false
+    t.string "status"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.float "total_price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["friend_id"], name: "index_bookings_on_friend_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
 
   create_table "friend_skills", force: :cascade do |t|
     t.bigint "skill_id", null: false
@@ -45,23 +59,10 @@ ActiveRecord::Schema.define(version: 2020_06_01_065039) do
   create_table "reviews", force: :cascade do |t|
     t.text "content"
     t.integer "rating"
-    t.bigint "session_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["session_id"], name: "index_reviews_on_session_id"
-  end
-
-  create_table "sessions", force: :cascade do |t|
-    t.bigint "friend_id", null: false
-    t.bigint "user_id", null: false
-    t.string "status"
-    t.datetime "start_time"
-    t.datetime "end_time"
-    t.float "total_price"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["friend_id"], name: "index_sessions_on_friend_id"
-    t.index ["user_id"], name: "index_sessions_on_user_id"
+    t.bigint "booking_id"
+    t.index ["booking_id"], name: "index_reviews_on_booking_id"
   end
 
   create_table "skills", force: :cascade do |t|
@@ -90,11 +91,12 @@ ActiveRecord::Schema.define(version: 2020_06_01_065039) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bookings", "friends"
+  add_foreign_key "bookings", "users"
   add_foreign_key "friend_skills", "friends"
   add_foreign_key "friend_skills", "skills"
   add_foreign_key "friend_tags", "friends"
   add_foreign_key "friend_tags", "tags"
-  add_foreign_key "reviews", "sessions"
-  add_foreign_key "sessions", "friends"
-  add_foreign_key "sessions", "users"
+  add_foreign_key "reviews", "bookings"
 end
+
