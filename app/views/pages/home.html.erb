@@ -1,2 +1,23 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container">
+  <div class="row-col-12">
+
+    <div class="db-card">
+      <div class="card">
+        <h1>User's Profile</h1>
+        <div class="btn btn-success">
+          <%= link_to "Edit my profile", my_profile_path %>
+        </div>
+      </div>
+
+      <div  class="db-btn">
+        <div class="btn btn-success">
+          <%= link_to "My bookings", my_bookings_path %>
+        </div>
+        <div class="btn btn-success">
+          <%= link_to "My listings", my_listings_path %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
