@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row">
+    <% @bookings.each do |booking| %>
+    <div class="col-lg-6">
+      <div class=mb-card>
+        <div class="card">
+          <h2><%= booking %></h2>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="mb-btn">
+  <div class="btn btn-success">
+    <%= link_to "Back to the your dashboard", root_path %>
+  </div>
+</div>
+
