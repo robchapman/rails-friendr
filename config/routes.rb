@@ -1,11 +1,16 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
-  resources :friends
-  resource :dashboard, only: :show do
-    collection do
-      get :my_bookings
-      get :my_friends
+
+  get 'dashboard', to: 'pages#dashboard'
+  get 'my_bookings', to: 'pages#my_bookings' #Bookings summary page for consumer
+  get 'my_listings', to: 'pages#my_listings'
+  resources :friends do
+    resources :bookings , only: [:create]
+    member do
+      get :bookings #Bookings summary page for provider
     end
   end
+
+    #ADD DELETE AND EDIT BOOKING LATER
 end
