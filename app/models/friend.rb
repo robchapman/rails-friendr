@@ -1,8 +1,7 @@
 class Friend < ApplicationRecord
-
-  has_many :friendskills
+  has_many :friendskills, dependent: :destroy
   has_many :skills, through: :friendskills
-  has_many :friendtags
+  has_many :friendtags, dependent: :destroy
   has_many :tags, through: :friendtags
   has_many :bookings
   has_many :reviews, through: :bookings
