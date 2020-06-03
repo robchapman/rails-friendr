@@ -7,7 +7,7 @@
         <h5 class="card-title"><%= friend.name %></h5>
         <p class="card-text"><%= friend.description %></p>
         <p class="card-text">$<%= friend.price %> per day <i class="fas fa-map-marker"> </i><%=  friend.location %></p>
-        <%= link_to "Book Now", friend_path(friend)  %>
+        <%= link_to "View", friend_path(friend)  %>
       </div>
     </div>
   <% end %>
