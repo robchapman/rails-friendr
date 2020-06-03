@@ -1,14 +1,16 @@
-
-<div class="container">
-<p> Details of your booking</p>
-  <div class="row">
-    <div class="col-sm-12 col-md-6 mt-3">
-      <p>Friend Id:  <%= @booking.friend_id %></p>
-      <p>Booking status : <%= @booking.status %></p>
-      <p>Starting Time :  <%= @booking.start_time %>  Ending Time : <%= @booking.end_time  %></p>
-      <p>Price:  <%= @booking.total_price %></p>
+<div class="row justify-content-center mt-5">
+    <div class="col-sm-12 col-md-6 mt-3 card">
+      <h5 class="card-title text-center mt-3"><strong>Booking Details</strong></h5>
+      <div class="card-info">
+        <p>Friend Name:  <%= @booking.friend.name %></p>
+        <p>Booking status : <%= @booking.status %></p>
+        <p>Starting Time :  <%= @booking.start_time %>
+        <p> Ending Time : <%= @booking.end_time  %></p>
+        <div class = "d-flex justify-content-center mb-3">
+        <%= link_to "Back to dashboard", dashboard_path, { :class=>"btn btn-primary" }  %>
+        </div>
+      </div>
     </div>
-  </div>
 </div>
 
 
