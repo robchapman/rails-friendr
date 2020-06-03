@@ -1,43 +1,40 @@
 # This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-#  "name" "description" "location" t.integer "price"
+# The data can then be loaded with the rails db:seed command (or saved alongside the database with db:setup).
 
 
-puts 'Cleaning database...'
-User.destroy_all
-Skill.destroy_all
-Tag.destroy_all
+# puts 'Cleaning database...'
+# Friend.destroy_all
+# Booking.destroy_all
+# Skill.destroy_all
+# Tag.destroy_all
 
 
-puts 'Creating Users'
+# puts 'Creating Users'
 user_set = []
-user_set << User.new(first_name: 'Homer', last_name: 'Simpson', email: 'homer@aol.com', password: 'password').create!
-user_set << User.new(first_name: 'Marge', last_name: 'Simpson', email: 'marge@aol.com', password: 'password').create!
-user_set << User.new(first_name: 'Bart', last_name: 'Simpson', email: 'bart@aol.com', password: 'password').create!
-user_set << User.new(first_name: 'Lisa', last_name: 'Simpson', email: 'lisar@aol.com', password: 'password').create!
-user_set << User.new(first_name: 'Maggie', last_name: 'Simpson', email: 'maggier@aol.com', password: 'password').create!
+user_set << User.new(first_name: 'Homer', last_name: 'Simpson', email: 'homer@aol.com', password: 'password').save!
+user_set << User.new(first_name: 'Marge', last_name: 'Simpson', email: 'marge@aol.com', password: 'password').save!
+user_set << User.new(first_name: 'Bart', last_name: 'Simpson', email: 'bart@aol.com', password: 'password').save!
+user_set << User.new(first_name: 'Lisa', last_name: 'Simpson', email: 'lisa@aol.com', password: 'password').save!
+user_set << User.new(first_name: 'Maggie', last_name: 'Simpson', email: 'maggie@aol.com', password: 'password').save!
+
+user_set = User.all
 
 puts 'Creating Skills'
 skills = [
   "Karate", "Sewing", "Cooking", "Pep-talk", "Light conversation", "Deep Conversation",
   "Unlisenced therapy", "Fashion advice", "Wing-man", "Party-animal","Get-away driver",
-  "Rolling ciggies", "Break dancing"
+  "Rolling ciggies", "Break dancing", "Boomerang"
 ]
 skill_set = []
 skills.each do |skill|
-  skill_set << Skill.new(name: skill).create!
+  skill_set << Skill.create!(name: skill)
 end
 
 puts 'Creating Tags'
 tags = ["elderly", "fun", "weddings", "bff", "Trend-setter"]
 tag_set = []
 tags.each do |tag|
-  tag_set << Tag.new(name: tag)
+  tag_set << Tag.create!(name: tag)
 end
 
 puts "Creating Friends"
@@ -47,27 +44,28 @@ friend_set = []
     name: Faker::TvShows::Friends.character,
     location: Faker::TvShows::Friends.location,
     description: Faker::TvShows::Friends.quote,
-    price: floor(rand * 100),
+    price: (rand * 100).floor,
     user: user_set.sample
   )
-  friend_set << friend.create!
+  friend_set << friend
+  friend.save!
 end
 
-friend_set << Friend.create!(name: "A Mans Best Friend", description: "A loyal labrador who will fetch your paper and follow you around the house", location: "South Yarra", price: "30")
-friend_set << Friend.create!(name: "Betty", description: "Grandma, she will knit you socks and bake you cakes", location: "Lovely Hill", price: "70")
-friend_set << Friend.create!(name: "Marty", description: "The take anywhere friend. Great with parents, life of the party", location: "Heaven", price: "40")
+friend_set << Friend.create!(name: "A Mans Best Friend", description: "A loyal labrador who will fetch your paper and follow you around the house", location: "South Yarra", price: "30", user: user_set.sample)
+friend_set << Friend.create!(name: "Betty", description: "Grandma, she will knit you socks and bake you cakes", location: "Lovely Hill", price: "70", user: user_set.sample)
+friend_set << Friend.create!(name: "Marty", description: "The take anywhere friend. Great with parents, life of the party", location: "Heaven", price: "40", user: user_set.sample)
 
 puts "Assigning skills to Friends"
 friend_set.each do |friend|
-  skills_set.sample(floor.rand * 5).each do |skill|
-    Friendskills.new(friend: friend, skill: skill)
+  skill_set.sample((rand * 5).floor).each do |skill|
+    FriendSkill.new(friend: friend, skill: skill)
   end
 end
 
 puts "Assigning tags to Friends"
 friend_set.each do |friend|
-  tag_set.sample(floor.rand * 5).each do |tag|
-    Tagskills.new(friend: friend, tag: tag)
+  tag_set.sample((rand * 5).floor).each do |tag|
+    FriendTag.new(friend: friend, tag: tag)
   end
 end
 
@@ -76,16 +74,17 @@ booking_set = []
 friend_set.each do |friend|
   (1..5).to_a.sample.times do |index|
     start_time = DateTime.current + 1.day + index.week
-    end_time = start_time + floor(rand * 5).day
+    end_time = start_time + ((rand * 5).floor).day
     booking = Booking.new(
       friend: friend,
       user: user_set.sample,
       total_price: (end_time - start_time) / 60 / 60 * friend.price,
       status: 'pending',
       start_time: start_time,
-      end_time: end_time,
+      end_time: end_time
     )
-    booking_set << booking.create!
+    booking_set << booking
+    booking.save!
   end
 end
 
@@ -96,7 +95,7 @@ booking_set.each do |booking|
     Review.new(
       content: comments.sample,
       rating: (1..5).to_a.sample
-      ).create!
+      ).save!
   end
 end
 

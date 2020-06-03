@@ -1,10 +1,11 @@
 class Friend < ApplicationRecord
-  has_many :friendskills, dependent: :destroy
-  has_many :skills, through: :friendskills
-  has_many :friendtags, dependent: :destroy
-  has_many :tags, through: :friendtags
+  has_many :friend_skills, dependent: :destroy
+  has_many :skills, through: :friend_skills
+  has_many :friend_tags, dependent: :destroy
+  has_many :tags, through: :friend_tags
   has_many :bookings
   has_many :reviews, through: :bookings
+  belongs_to :user
   has_one_attached :photo
 
   validates :name, presence: true
