@@ -15,4 +15,7 @@ class PagesController < ApplicationController
 
   def my_profile
   end
+
+  def my_providing_bookings
+  end
 end
