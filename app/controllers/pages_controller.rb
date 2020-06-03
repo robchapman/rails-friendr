@@ -1,4 +1,6 @@
 class PagesController < ApplicationController
+  before_action :set_friends, only: :my_listings
+
   def home
   end
 
@@ -9,13 +11,14 @@ class PagesController < ApplicationController
     @bookings = current_user.bookings
   end
 
-  def my_listings
-    @friends = current_user.friends
-  end
+  def my_listings; end
 
   def my_profile
   end
 
-  def my_providing_bookings
+  private
+
+  def set_friends
+    @friends = current_user.friends
   end
 end

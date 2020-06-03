@@ -4,7 +4,12 @@
     <div class="col-lg-6">
       <div class=ml-card>
         <div class="card">
-          <h2><%= friend %></h2>
+          <h2><%= friend.name %>'s bookings</h2>
+          <% friend.bookings.each do |booking| %>
+          <h3><%= booking.user.first_name + " " +booking.user.last_name %></h3>
+          <p>Start:<%= booking.start_time %></p>
+          <p>End:<%= booking.end_time %></p>
+          <% end %>
         </div>
       </div>
     </div>
@@ -12,8 +17,8 @@
   </div>
 </div>
 
-    <div class="ml-btn">
-      <div class="btn btn-success">
-        <%= link_to "Back to the your dashboard", root_path %>
-      </div>
-    </div>
+<div class="ml-btn">
+  <div class="btn btn-success">
+    <%= link_to "Back to the your dashboard", dashboard_path %>
+  </div>
+</div>
