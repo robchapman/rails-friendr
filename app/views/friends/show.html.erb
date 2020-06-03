@@ -8,11 +8,13 @@
           <p class="card-text"><%= @friend.description  %></p>
         </div>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item"><p>Age: <%= @friend.price %></p></li>
+          <li class="list-group-item"><p>Price: <%= @friend.price %></p></li>
           <li class="list-group-item"><p>Location: <%= @friend.location  %></li>
         </ul>
         <div class="card-body">
+
           <%= link_to "Book Now", new_friend_booking_path(@friend)  %>
+
         </div>
       </div>
   </div>
