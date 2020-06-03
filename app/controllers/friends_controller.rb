@@ -5,6 +5,7 @@ class FriendsController < ApplicationController
   end
 
   def show
+
   end
 
   def new
@@ -34,6 +35,7 @@ class FriendsController < ApplicationController
   end
 
   def bookings
+
     # TODO
   end
 
@@ -45,5 +47,6 @@ private
   def friend_params
     params.require(:friend).permit(:name, :description, :photo, :price, :location)
   end
+
 end
 

@@ -1,16 +1,16 @@
 <h1>Browse friends</h1>
 <div class="d-flex justify-content-between flex-wrap">
 <% @friends.each do |friend| %>
-
     <div class="card col-3" style="width: 18rem;">
+    <div class="card" style="width: 18rem;">
+      <%= cl_image_tag friend.photo.key, height: 300, width: 400, crop: :fill, class: "card-img-top" %>
       <div class="card-body">
         <h5 class="card-title"><%= friend.name %></h5>
         <p class="card-text"><%= friend.description %></p>
         <p class="card-text">$<%= friend.price %> per day <i class="fas fa-map-marker"> </i><%=  friend.location %></p>
-        <a href="#" class="btn btn-primary">Book Now</a>
         <%= link_to "Edit", edit_friend_path(friend)  %>
         <%= link_to "Delete", friend_path(friend), method: :delete  %>
-
+        <%= link_to "View", friend_path(friend)  %>
       </div>
     </div>
   <% end %>
@@ -18,7 +18,9 @@
   <div class="card-body">
     <h5 class="card-title">List a friend</h5>
     <p class="card-text">Have a friend you'd like to list?</p>
-    <%= link_to "List Now", new_friend_path  %>
+
+    <%= link_to "Add a friend", new_friend_path  %>
+
   </div>
 </div>
 </div>
