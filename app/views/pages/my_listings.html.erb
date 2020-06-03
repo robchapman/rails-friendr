@@ -1,24 +1,25 @@
-<div class="container">
-  <div class="row">
-    <% @friends.each do |friend| %>
-    <div class="col-lg-6">
-      <div class=ml-card>
-        <div class="card">
-          <h2><%= friend.name %>'s bookings</h2>
-          <% friend.bookings.each do |booking| %>
-          <h3><%= booking.user.first_name + " " +booking.user.last_name %></h3>
-          <p>Start:<%= booking.start_time %></p>
-          <p>End:<%= booking.end_time %></p>
-          <% end %>
-        </div>
-      </div>
+<h1>Browse My friends</h1>
+
+<div class="cards-container d-flex flex-wrap justify-content-center">
+  <% @friends.each do |friend| %>
+  <div class="card mx-3 mb-3" style="width: 300px;">
+    <%= cl_image_tag friend.photo.key, height: 300, width: 400, crop: :fill, class: "card-img-top" %>
+    <div class="card-body">
+      <h5 class="card-title"><%= friend.name %>'s bookings</h5>
+      <% friend.bookings.each do |booking| %>
+      <p><%= booking.user.first_name + " " +booking.user.last_name %></p>
+      <p>Start-time:<%= booking.start_time %></p>
+      <p>End-time:<%= booking.end_time %></p>
+      <% end %>
     </div>
-    <% end %>
   </div>
+  <% end %>
 </div>
 
-<div class="ml-btn">
-  <div class="btn btn-success">
+  <div class="btn btn-success d-flex justify-content-center m-3">
+    <%= link_to "Edit My Friends", dashboard_path %>
+  </div>
+
+  <div class="btn btn-success d-flex justify-content-center m-3">
     <%= link_to "Back to the your dashboard", dashboard_path %>
   </div>
-</div>
