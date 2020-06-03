@@ -1,23 +1,28 @@
 # This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or saved alongside the database with db:setup).
+# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
+#
+# Examples:
+#
+#   movies = Movie.create([{ : 'Star Wars' }, { name: 'Lord of the Rings' }])
+#   Character.create(name: 'Luke', movie: movies.first)
+#  "name" "description" "location" t.integer "price"
 
 
-# puts 'Cleaning database...'
-# Friend.destroy_all
-# Booking.destroy_all
-# Skill.destroy_all
-# Tag.destroy_all
+puts 'Cleaning database...'
+Booking.destroy_all
+User.destroy_all
+Skill.destroy_all
+Tag.destroy_all
 
 
 # puts 'Creating Users'
 user_set = []
-user_set << User.new(first_name: 'Homer', last_name: 'Simpson', email: 'homer@aol.com', password: 'password').save!
-user_set << User.new(first_name: 'Marge', last_name: 'Simpson', email: 'marge@aol.com', password: 'password').save!
-user_set << User.new(first_name: 'Bart', last_name: 'Simpson', email: 'bart@aol.com', password: 'password').save!
-user_set << User.new(first_name: 'Lisa', last_name: 'Simpson', email: 'lisa@aol.com', password: 'password').save!
-user_set << User.new(first_name: 'Maggie', last_name: 'Simpson', email: 'maggie@aol.com', password: 'password').save!
+user_set << User.create!(first_name: 'Homer', last_name: 'Simpson', email: 'homer@aol.com', password: 'password')
+user_set << User.create!(first_name: 'Marge', last_name: 'Simpson', email: 'marge@aol.com', password: 'password')
+user_set << User.create!(first_name: 'Bart', last_name: 'Simpson', email: 'bart@aol.com', password: 'password')
+user_set << User.create!(first_name: 'Lisa', last_name: 'Simpson', email: 'lisar@aol.com', password: 'password')
+user_set << User.create!(first_name: 'Maggie', last_name: 'Simpson', email: 'maggier@aol.com', password: 'password')
 
-user_set = User.all
 
 puts 'Creating Skills'
 skills = [
@@ -40,7 +45,7 @@ end
 puts "Creating Friends"
 friend_set = []
 10.times do
-  friend = Friend.new(
+  friend = Friend.create!(
     name: Faker::TvShows::Friends.character,
     location: Faker::TvShows::Friends.location,
     description: Faker::TvShows::Friends.quote,
@@ -65,17 +70,18 @@ end
 puts "Assigning tags to Friends"
 friend_set.each do |friend|
   tag_set.sample((rand * 5).floor).each do |tag|
-    FriendTag.new(friend: friend, tag: tag)
+    FriendTag.create!(friend: friend, tag: tag)
   end
 end
 
 puts "Creating Bookings"
 booking_set = []
 friend_set.each do |friend|
-  (1..5).to_a.sample.times do |index|
+
+    rand(5).times do |index|
     start_time = DateTime.current + 1.day + index.week
-    end_time = start_time + ((rand * 5).floor).day
-    booking = Booking.new(
+    end_time = start_time + rand(5).day
+    booking = Booking.create!(
       friend: friend,
       user: user_set.sample,
       total_price: (end_time - start_time) / 60 / 60 * friend.price,
@@ -84,7 +90,6 @@ friend_set.each do |friend|
       end_time: end_time
     )
     booking_set << booking
-    booking.save!
   end
 end
 
@@ -92,10 +97,11 @@ puts 'Creating Reviews'
 comments = ["Great Service!", "Very dissapointing", "I want my money back!", "Fine, I guess"]
 booking_set.each do |booking|
   if rand > 0.5
-    Review.new(
+    Review.create!(
       content: comments.sample,
-      rating: (1..5).to_a.sample
-      ).save!
+      rating: (1..5).to_a.sample,
+      booking: booking
+      )
   end
 end
 
