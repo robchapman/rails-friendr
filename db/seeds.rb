@@ -1,3 +1,5 @@
+require "open-uri"
+file = URI.open("https://cdn.vox-cdn.com/thumbor/sK3gMTENF_LR1DhAUl9e3V_5jC4=/0x0:2592x2017/1200x800/filters:focal(1089x801:1503x1215)/cdn.vox-cdn.com/uploads/chorus_image/image/65282724/friendscast.0.0.1429818191.0.jpg")
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
@@ -52,8 +54,9 @@ friend_set = []
     price: (rand * 100).floor,
     user: user_set.sample
   )
-  friend_set << friend
+  friend.photo.attach(io: file, filename: "#{friend.name}.jpg", content_type: 'image/jpg')
   friend.save!
+  friend_set << friend
 end
 
 friend_set << Friend.create!(name: "A Mans Best Friend", description: "A loyal labrador who will fetch your paper and follow you around the house", location: "South Yarra", price: "30", user: user_set.sample)
