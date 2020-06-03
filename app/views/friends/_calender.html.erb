@@ -1,0 +1,9 @@
+<%= month_calendar events: bookings do |date, bookings| %>
+  <%= date.day %>
+    <% bookings.each do |booking| %>
+    <div>
+      <%= "X" %>
+    </div>
+  <% end %>
+<% end %>
+
