@@ -8,7 +8,6 @@ require "open-uri"
 #   Character.create(name: 'Luke', movie: movies.first)
 #  "name" "description" "location" t.integer "price"
 
-
 puts 'Cleaning database...'
 Booking.destroy_all
 Friend.destroy_all
@@ -22,8 +21,8 @@ user_set = []
 user_set << User.create!(first_name: 'Homer', last_name: 'Simpson', email: 'homer@aol.com', password: 'password')
 user_set << User.create!(first_name: 'Marge', last_name: 'Simpson', email: 'marge@aol.com', password: 'password')
 user_set << User.create!(first_name: 'Bart', last_name: 'Simpson', email: 'bart@aol.com', password: 'password')
-user_set << User.create!(first_name: 'Lisa', last_name: 'Simpson', email: 'lisar@aol.com', password: 'password')
-user_set << User.create!(first_name: 'Maggie', last_name: 'Simpson', email: 'maggier@aol.com', password: 'password')
+user_set << User.create!(first_name: 'Lisa', last_name: 'Simpson', email: 'lisa@aol.com', password: 'password')
+user_set << User.create!(first_name: 'Maggie', last_name: 'Simpson', email: 'maggie@aol.com', password: 'password')
 
 
 puts 'Creating Skills'
@@ -68,7 +67,7 @@ end
 puts "Assigning skills to Friends"
 friend_set.each do |friend|
   skill_set.sample((rand * 5).floor).each do |skill|
-    FriendSkill.new(friend: friend, skill: skill)
+    FriendSkill.create!(friend: friend, skill: skill)
   end
 end
 
@@ -111,3 +110,4 @@ booking_set.each do |booking|
 end
 
 puts 'Finished!'
+
