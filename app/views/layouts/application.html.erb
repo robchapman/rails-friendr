@@ -12,14 +12,16 @@
 </head>
 
 <body>
-  <!-- PUT this above the 'yield' -->
   <%= render 'shared/navbar' %>
+  <div class="container">
+  <!-- PUT this above the 'yield' -->
 
 
   <%= yield %>
 
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
+  </div>
 </body>
 
 </html>
