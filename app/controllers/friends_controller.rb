@@ -21,11 +21,15 @@ class FriendsController < ApplicationController
   end
 
   def bookings
-# TODO
+ # TODO
   end
 
   private
-    def friend_params
+   def friend_params
     params.require(:friend).permit(:name, :description, :photo, :price, :location)
+
     end
+
+
 end
+

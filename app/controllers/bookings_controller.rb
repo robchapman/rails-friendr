@@ -24,6 +24,7 @@ class BookingsController < ApplicationController
       end
   end
 
+
   def edit
   end
 
@@ -35,5 +36,6 @@ class BookingsController < ApplicationController
   def booking_params
     params.require(:booking).permit(:friend_id, :user_id, :status, :start_time, :end_time, :total_price)
   end
+
 end
 #ADD DELETE AND EDIT BOOKING LATER

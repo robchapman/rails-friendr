@@ -1,11 +1,102 @@
 # This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-#  "name" "description" "location" t.integer "price"
-Friend.create(name: "A Mans Best Friend", description: "A loyal labrador who will fetch your paper and follow you around the house", location: "South Yarra", price: "30")
-Friend.create(name: "Betty", description: "Grandma, she will knit you socks and bake you cakes", location: "Lovely Hill", price: "70")
-Friend.create(name: "Marty", description: "The take anywhere friend. Great with parents, life of the party", location: "Heaven", price: "40")
+# The data can then be loaded with the rails db:seed command (or saved alongside the database with db:setup).
+
+
+# puts 'Cleaning database...'
+# Friend.destroy_all
+# Booking.destroy_all
+# Skill.destroy_all
+# Tag.destroy_all
+
+
+# puts 'Creating Users'
+user_set = []
+user_set << User.new(first_name: 'Homer', last_name: 'Simpson', email: 'homer@aol.com', password: 'password').save!
+user_set << User.new(first_name: 'Marge', last_name: 'Simpson', email: 'marge@aol.com', password: 'password').save!
+user_set << User.new(first_name: 'Bart', last_name: 'Simpson', email: 'bart@aol.com', password: 'password').save!
+user_set << User.new(first_name: 'Lisa', last_name: 'Simpson', email: 'lisa@aol.com', password: 'password').save!
+user_set << User.new(first_name: 'Maggie', last_name: 'Simpson', email: 'maggie@aol.com', password: 'password').save!
+
+user_set = User.all
+
+puts 'Creating Skills'
+skills = [
+  "Karate", "Sewing", "Cooking", "Pep-talk", "Light conversation", "Deep Conversation",
+  "Unlisenced therapy", "Fashion advice", "Wing-man", "Party-animal","Get-away driver",
+  "Rolling ciggies", "Break dancing", "Boomerang"
+]
+skill_set = []
+skills.each do |skill|
+  skill_set << Skill.create!(name: skill)
+end
+
+puts 'Creating Tags'
+tags = ["elderly", "fun", "weddings", "bff", "Trend-setter"]
+tag_set = []
+tags.each do |tag|
+  tag_set << Tag.create!(name: tag)
+end
+
+puts "Creating Friends"
+friend_set = []
+10.times do
+  friend = Friend.new(
+    name: Faker::TvShows::Friends.character,
+    location: Faker::TvShows::Friends.location,
+    description: Faker::TvShows::Friends.quote,
+    price: (rand * 100).floor,
+    user: user_set.sample
+  )
+  friend_set << friend
+  friend.save!
+end
+
+friend_set << Friend.create!(name: "A Mans Best Friend", description: "A loyal labrador who will fetch your paper and follow you around the house", location: "South Yarra", price: "30", user: user_set.sample)
+friend_set << Friend.create!(name: "Betty", description: "Grandma, she will knit you socks and bake you cakes", location: "Lovely Hill", price: "70", user: user_set.sample)
+friend_set << Friend.create!(name: "Marty", description: "The take anywhere friend. Great with parents, life of the party", location: "Heaven", price: "40", user: user_set.sample)
+
+puts "Assigning skills to Friends"
+friend_set.each do |friend|
+  skill_set.sample((rand * 5).floor).each do |skill|
+    FriendSkill.new(friend: friend, skill: skill)
+  end
+end
+
+puts "Assigning tags to Friends"
+friend_set.each do |friend|
+  tag_set.sample((rand * 5).floor).each do |tag|
+    FriendTag.new(friend: friend, tag: tag)
+  end
+end
+
+puts "Creating Bookings"
+booking_set = []
+friend_set.each do |friend|
+  (1..5).to_a.sample.times do |index|
+    start_time = DateTime.current + 1.day + index.week
+    end_time = start_time + ((rand * 5).floor).day
+    booking = Booking.new(
+      friend: friend,
+      user: user_set.sample,
+      total_price: (end_time - start_time) / 60 / 60 * friend.price,
+      status: 'pending',
+      start_time: start_time,
+      end_time: end_time
+    )
+    booking_set << booking
+    booking.save!
+  end
+end
+
+puts 'Creating Reviews'
+comments = ["Great Service!", "Very dissapointing", "I want my money back!", "Fine, I guess"]
+booking_set.each do |booking|
+  if rand > 0.5
+    Review.new(
+      content: comments.sample,
+      rating: (1..5).to_a.sample
+      ).save!
+  end
+end
+
+puts 'Finished!'
