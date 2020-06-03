@@ -2,12 +2,12 @@
 <div class="d-flex justify-content-between wrap">
 <% @friends.each do |friend| %>
     <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="https://source.unsplash.com/random" alt="Card image cap">
+      <%= cl_image_tag friend.photo.key, height: 300, width: 400, crop: :fill, class: "card-img-top" %>
       <div class="card-body">
         <h5 class="card-title"><%= friend.name %></h5>
         <p class="card-text"><%= friend.description %></p>
         <p class="card-text">$<%= friend.price %> per day <i class="fas fa-map-marker"> </i><%=  friend.location %></p>
-        <a href="#" class="btn btn-primary">Book Now</a>
+        <%= link_to "Book Now", friend_path(friend)  %>
       </div>
     </div>
   <% end %>
