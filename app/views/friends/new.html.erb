@@ -1,4 +1,8 @@
 <div class="container">
+<h1>New Friend</h1>
+
+<%= render 'form', friend: @friend %>
+
   <%= simple_form_for(@friend) do |f| %>
     <%= f.error_notification %>
     <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
@@ -17,3 +21,4 @@
 
   <% end %>
 </div>
+
