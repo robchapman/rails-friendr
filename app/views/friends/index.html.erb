@@ -1,26 +1,23 @@
 <h1>Browse friends</h1>
-<div class="d-flex justify-content-between flex-wrap">
+<div class="">
+  <div class="cards-container d-flex flex-wrap justify-content-center">
 <% @friends.each do |friend| %>
-    <div class="card col-3" style="width: 18rem;">
-    <div class="card" style="width: 18rem;">
+    <div class="card mx-3 mb-3" style="width: 300px;">
       <%= cl_image_tag friend.photo.key, height: 300, width: 400, crop: :fill, class: "card-img-top" %>
       <div class="card-body">
         <h5 class="card-title"><%= friend.name %></h5>
         <p class="card-text"><%= friend.description %></p>
         <p class="card-text">$<%= friend.price %> per day <i class="fas fa-map-marker"> </i><%=  friend.location %></p>
-        <%= link_to "Edit", edit_friend_path(friend)  %>
-        <%= link_to "Delete", friend_path(friend), method: :delete  %>
         <%= link_to "View", friend_path(friend)  %>
       </div>
     </div>
   <% end %>
- <div class="card col-3">
+  </div>
+ <div class="card">
   <div class="card-body">
     <h5 class="card-title">List a friend</h5>
     <p class="card-text">Have a friend you'd like to list?</p>
-
     <%= link_to "Add a friend", new_friend_path  %>
-
   </div>
 </div>
 </div>
