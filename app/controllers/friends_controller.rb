@@ -17,6 +17,7 @@ class FriendsController < ApplicationController
       if @friend.save
         redirect_to friend_path(@friend)
       else
+        raise
         render 'new'
       end
   end
