@@ -1,5 +1,4 @@
 require "open-uri"
-file = URI.open("https://cdn.vox-cdn.com/thumbor/sK3gMTENF_LR1DhAUl9e3V_5jC4=/0x0:2592x2017/1200x800/filters:focal(1089x801:1503x1215)/cdn.vox-cdn.com/uploads/chorus_image/image/65282724/friendscast.0.0.1429818191.0.jpg")
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
@@ -12,6 +11,7 @@ file = URI.open("https://cdn.vox-cdn.com/thumbor/sK3gMTENF_LR1DhAUl9e3V_5jC4=/0x
 
 puts 'Cleaning database...'
 Booking.destroy_all
+Friend.destroy_all
 User.destroy_all
 Skill.destroy_all
 Tag.destroy_all
@@ -53,15 +53,17 @@ friend_set = []
     description: Faker::TvShows::Friends.quote,
     price: (rand * 100).floor,
     user: user_set.sample
-  )
+    )
+  file = URI.open("https://cdn.vox-cdn.com/thumbor/sK3gMTENF_LR1DhAUl9e3V_5jC4=/0x0:2592x2017/1200x800/filters:focal(1089x801:1503x1215)/cdn.vox-cdn.com/uploads/chorus_image/image/65282724/friendscast.0.0.1429818191.0.jpg")
   friend.photo.attach(io: file, filename: "#{friend.name}.jpg", content_type: 'image/jpg')
-  friend.save!
   friend_set << friend
+  friend.save!
+  puts "added #{friend.name} with photo"
 end
 
-friend_set << Friend.create!(name: "A Mans Best Friend", description: "A loyal labrador who will fetch your paper and follow you around the house", location: "South Yarra", price: "30", user: user_set.sample)
-friend_set << Friend.create!(name: "Betty", description: "Grandma, she will knit you socks and bake you cakes", location: "Lovely Hill", price: "70", user: user_set.sample)
-friend_set << Friend.create!(name: "Marty", description: "The take anywhere friend. Great with parents, life of the party", location: "Heaven", price: "40", user: user_set.sample)
+# friend_set << Friend.create!(name: "A Mans Best Friend", description: "A loyal labrador who will fetch your paper and follow you around the house", location: "South Yarra", price: "30", user: user_set.sample)
+# friend_set << Friend.create!(name: "Betty", description: "Grandma, she will knit you socks and bake you cakes", location: "Lovely Hill", price: "70", user: user_set.sample)
+# friend_set << Friend.create!(name: "Marty", description: "The take anywhere friend. Great with parents, life of the party", location: "Heaven", price: "40", user: user_set.sample)
 
 puts "Assigning skills to Friends"
 friend_set.each do |friend|
@@ -81,7 +83,7 @@ puts "Creating Bookings"
 booking_set = []
 friend_set.each do |friend|
 
-    rand(5).times do |index|
+  rand(5).times do |index|
     start_time = DateTime.current + 1.day + index.week
     end_time = start_time + rand(5).day
     booking = Booking.create!(
@@ -91,7 +93,7 @@ friend_set.each do |friend|
       status: 'pending',
       start_time: start_time,
       end_time: end_time
-    )
+      )
     booking_set << booking
   end
 end
