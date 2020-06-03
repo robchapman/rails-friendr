@@ -9,7 +9,6 @@ class BookingsController < ApplicationController
   end
 
   def create
-
     @friend = Friend.find(params[:friend_id])
     @booking = Booking.new(booking_params)
     @booking.friend = @friend
@@ -19,6 +18,7 @@ class BookingsController < ApplicationController
       if @booking.save
         redirect_to booking_path(@booking)
       else
+        raise
         render 'new'
       end
   end
