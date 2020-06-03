@@ -8,7 +8,6 @@ require "open-uri"
 #   Character.create(name: 'Luke', movie: movies.first)
 #  "name" "description" "location" t.integer "price"
 
-
 puts 'Cleaning database...'
 Booking.destroy_all
 Friend.destroy_all
@@ -111,3 +110,4 @@ booking_set.each do |booking|
 end
 
 puts 'Finished!'
+
