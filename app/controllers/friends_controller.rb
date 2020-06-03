@@ -5,6 +5,7 @@ class FriendsController < ApplicationController
 
   def show
     @friend = Friend.find(params[:id])
+  end
 
   def new
     @friend = Friend.new
@@ -20,13 +21,13 @@ class FriendsController < ApplicationController
   end
 
   def bookings
-# TODO
+ # TODO
   end
 
   private
-    def friend_params
+   def friend_params
     params.require(:friend).permit(:name, :description, :photo, :price, :location)
   end
 
-  end
 end
+
