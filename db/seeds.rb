@@ -74,6 +74,34 @@ puts "Creating Rex"
   rex.save!
   puts "added #{rex.name} with photo"
 
+  puts "rachel"
+ rachel = Friend.create!(
+    name: "Rachel Green",
+    location: "138 Cubitt St, Cremorne",
+    description: "Unagi Is A Total State Of Awareness.",
+    price: "170",
+    user: user_set.sample
+    )
+  file = File.open('app/assets/images/rachel.jpg')
+  ross.photo.attach(io: file, filename: "rachel.jpg", content_type: 'image/jpg')
+  friend_set << rachel
+  rachel.save!
+  puts "added #{rachel.name} with photo"
+
+    puts "Sy"
+ sy = Friend.create!(
+    name: "Sy Rashid",
+    location: "Brunton Ave, Richmond VIC 3002",
+    description: "Lets BOOMerang",
+    price: "270",
+    user: user_set.sample
+    )
+  file = File.open('app/assets/images/sy.jpeg')
+  ross.photo.attach(io: file, filename: "sy.jpeg", content_type: 'image/jpg')
+  friend_set << sy
+  sy.save!
+  puts "added #{sy.name} with photo"
+
 puts "Creating Grandma"
   betty = Friend.create!(
     name: "Betty",
@@ -102,6 +130,20 @@ puts "Creating Marty"
   friend_set << marty
   marty.save!
   puts "added #{marty.name} with photo"
+
+puts "Ross"
+ ross = Friend.create!(
+    name: "Ross Geller",
+    location: "145 Swan St, Richmond",
+    description: "Unagi Is A Total State Of Awareness.",
+    price: "170",
+    user: user_set.sample
+    )
+  file = File.open('app/assets/images/ross.jpg')
+  ross.photo.attach(io: file, filename: "ross.jpg", content_type: 'image/jpg')
+  friend_set << ross
+  ross.save!
+  puts "added #{ross.name} with photo"
 
 puts "Luke Goodlooking"
   luke = Friend.create!(
