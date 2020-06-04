@@ -23,3 +23,24 @@ $border-radius-lg: 2px;
 $border-radius-sm: 2px;
 
 // Override other variables below!
+.btn-primary{
+ background: #181856 !important;
+ border-color: white !important;
+
+}
+
+.btn-warning{
+  border-color: white !important;
+}
+
+.btn-warning:hover{
+  color: orange !important;
+  background: white !important;
+  transition: 1s;
+}
+
+.btn-primary:hover{
+  color: #181856 !important;
+  background: white !important;
+  transition: 1s;
+}
