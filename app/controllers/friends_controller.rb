@@ -1,7 +1,13 @@
 class FriendsController < ApplicationController
   before_action :set_friend, only: [:show, :destroy, :edit, :update]
   def index
-    @friends = Friend.all
+
+
+    if params[:query].present?
+      @friends = Friend.where(title: params[:query])
+    else
+      @friends = Friend.all
+    end
   end
 
   def show
