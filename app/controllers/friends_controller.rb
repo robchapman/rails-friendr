@@ -15,6 +15,7 @@ class FriendsController < ApplicationController
       image_url: helpers.asset_url('map_icon.png')
     }
     end
+
   end
 
   def show
