@@ -10,16 +10,19 @@
       <p><%= booking.user.first_name + " " +booking.user.last_name %></p>
       <p>Start-time:<%= booking.start_time %></p>
       <p>End-time:<%= booking.end_time %></p>
+      <div class="btn btn-success d-flex justify-content-center m-3">
+        <%= link_to "See booking", booking_path(booking) %>
+      </div>
       <% end %>
+    </div>
+    <div class="btn btn-success d-flex justify-content-center m-3">
+      <%= link_to "Edit My Friends", edit_friend_path(friend) %>
     </div>
   </div>
   <% end %>
 </div>
 
-  <div class="btn btn-success d-flex justify-content-center m-3">
-    <%= link_to "Edit My Friends", dashboard_path %>
-  </div>
 
-  <div class="btn btn-success d-flex justify-content-center m-3">
-    <%= link_to "Back to the your dashboard", dashboard_path %>
-  </div>
+<div class="btn btn-success d-flex justify-content-center m-3">
+  <%= link_to "Back to the your dashboard", dashboard_path %>
+</div>
