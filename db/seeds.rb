@@ -29,7 +29,7 @@ puts 'Creating Skills'
 skills = [
   "Karate", "Sewing", "Cooking", "Pep-talk", "Light conversation", "Deep Conversation",
   "Unlisenced therapy", "Fashion advice", "Wing-man", "Party-animal","Get-away driver",
-  "Rolling ciggies", "Break dancing", "Boomerang", "Retrieving the paper"
+  "Rolling ciggies", "Break dancing", "Boomerang", "Retrieving the paper", "Loyal"
 ]
 skill_set = []
 skills.each do |skill|
@@ -74,6 +74,34 @@ puts "Creating Rex"
   rex.save!
   puts "added #{rex.name} with photo"
 
+puts "rachel"
+ rachel = Friend.create!(
+    name: "Rachel Green",
+    location: "138 Cubitt St, Cremorne",
+    description: "Everyone I know is either getting married or getting pregnant...",
+    price: "170",
+    user: user_set.sample
+    )
+  file = File.open('app/assets/images/rachel.jpg')
+  rachel.photo.attach(io: file, filename: "rachel.jpg", content_type: 'image/jpg')
+  friend_set << rachel
+  rachel.save!
+  puts "added #{rachel.name} with photo"
+
+puts "Sy"
+ sy = Friend.create!(
+    name: "Sy Rashid",
+    location: "Brunton Ave, Richmond",
+    description: "Lets BOOMerang",
+    price: "270",
+    user: user_set.sample
+    )
+  file = File.open('app/assets/images/sy.jpeg')
+  sy.photo.attach(io: file, filename: "sy.jpeg", content_type: 'image/jpg')
+  friend_set << sy
+  sy.save!
+  puts "added #{sy.name} with photo"
+
 puts "Creating Grandma"
   betty = Friend.create!(
     name: "Betty",
@@ -102,6 +130,20 @@ puts "Creating Marty"
   friend_set << marty
   marty.save!
   puts "added #{marty.name} with photo"
+
+puts "Ross"
+ ross = Friend.create!(
+    name: "Ross Geller",
+    location: "145 Swan St, Richmond",
+    description: "Unagi Is A Total State Of Awareness.",
+    price: "170",
+    user: user_set.sample
+    )
+  file = File.open('app/assets/images/ross.jpg')
+  ross.photo.attach(io: file, filename: "ross.jpg", content_type: 'image/jpg')
+  friend_set << ross
+  ross.save!
+  puts "added #{ross.name} with photo"
 
 puts "Luke Goodlooking"
   luke = Friend.create!(
@@ -150,11 +192,13 @@ puts "Joey"
 # friend_set << Friend.create!(name: "Marty", description: "The take anywhere friend. Great with parents, life of the party", location: "Heaven", price: "40", user: user_set.sample)
 
 puts "Assigning skills to Friends"
-friend_set.each do |friend|
-  skill_set.sample((rand * 5).floor).each do |skill|
-    FriendSkill.create!(friend: friend, skill: skill)
-  end
-end
+
+# friend_set.each do |friend|
+#   skill_set.sample((rand * 5).floor).each do |skill|
+#     FriendSkill.create!(friend: friend, skill: skill)
+#   end
+# end
+FriendSkill.create!(friend: ross, skill: "Karate")
 
 puts "Assigning tags to Friends"
 friend_set.each do |friend|
