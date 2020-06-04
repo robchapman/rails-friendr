@@ -6,20 +6,6 @@ class FriendsController < ApplicationController
     else
       @friends = Friend.geocoded
     end
-<<<<<<< HEAD
-
-    @friends = Friend.geocoded # returns flats with coordinates
-
-    @markers = @friends.map do |friend|
-      {
-        lat: friend.latitude,
-        lng: friend.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { friend: friend }),
-        image_url: helpers.asset_url('map_icon.png')
-      }
-
-
-=======
 
     @markers = @friends.map do |friend|
     {
@@ -29,7 +15,6 @@ class FriendsController < ApplicationController
       image_url: helpers.asset_url('map_icon.png')
     }
     end
->>>>>>> master
   end
 
   def show
