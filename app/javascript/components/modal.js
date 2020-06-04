@@ -1,3 +1,5 @@
-$('#myModal').on('shown.bs.modal', function () {
+
+const initModal = () => { $('#myModal').on('shown.bs.modal', function () {
   $('#myInput').trigger('focus')
 })
+}
