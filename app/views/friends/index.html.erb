@@ -10,7 +10,7 @@
   <div>
     <div class="cards-container d-flex flex-wrap justify-content-center">
   <% @friends.each do |friend| %>
-      <div class="card mx-3 mb-3" style="width: 300px;">
+      <div class="card mx-3 mb-3 shadow mb-5 bg-white rounded" style="width: 300px;">
         <%= cl_image_tag friend.photo.key, height: 350, width: 350, crop: :fill, class: "card-img-top" %>
         <div class="card-body">
           <h5 class="card-title"><%= friend.name %></h5>

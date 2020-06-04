@@ -1,13 +1,14 @@
+
 <div class="container">
   <div style = "height: 100vh" class= "mx-auto text-center d-flex flex-column justify-content-center align-items-center ">
-    <h1>Welcome to Friendr</h1>
-    <h1>Need a pal?</h1>
     <br>
-    <%= link_to "YES", friends_path, { :class=>"btn btn-primary btn-lg btn-block" }   %>
+    <%= link_to "Find a friend", friends_path, { :class=>"btn btn-primary" }   %>
     <br>
-    <button type="button" class="btn btn-warning btn-lg btn-block" data-toggle="modal" data-target="#exampleModal">
+    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">
       No I have many
     </button>
   </div>
  <%= render 'components/modal' %>
  </div>
+
+

@@ -15,10 +15,18 @@ class FriendsController < ApplicationController
       image_url: helpers.asset_url('map_icon.png')
     }
     end
+
   end
 
   def show
     @booking = Booking.new
+    @markers =
+      [{
+        lat: @friend.latitude,
+        lng: @friend.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { friend: @friend }),
+        image_url: helpers.asset_url('map_icon.png')
+      }]
   end
 
   def new
@@ -56,6 +64,4 @@ private
   def friend_params
     params.require(:friend).permit(:name, :description, :photo, :price, :location)
   end
-
 end
-
