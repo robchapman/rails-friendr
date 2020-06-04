@@ -9,10 +9,9 @@
         </div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item">
-            <% @skills.each do |skill| %>
-            <p>Skills: <%=  %></p>
+            <% @friend.skills.each do |skill| %>
+            <p>Skills:<%= skill.name %></p>
             <% end %></li>
-
           <li class="list-group-item"><p>Price: <%= @friend.price %></p></li>
           <li class="list-group-item"><p>Location: <%= @friend.location  %></li>
 

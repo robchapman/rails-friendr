@@ -18,11 +18,11 @@ Tag.destroy_all
 
 # puts 'Creating Users'
 user_set = []
-user_set << User.create!(first_name: 'Homer', last_name: 'Simpson', email: 'homer@aol.com', password: 'password', description: 'Hey I am Homer. I live in CBD and work in tech. I can teach you about software development!!')
-user_set << User.create!(first_name: 'Marge', last_name: 'Simpson', email: 'marge@aol.com', password: 'password')
-user_set << User.create!(first_name: 'Bart', last_name: 'Simpson', email: 'bart@aol.com', password: 'password')
-user_set << User.create!(first_name: 'Lisa', last_name: 'Simpson', email: 'lisa@aol.com', password: 'password')
-user_set << User.create!(first_name: 'Maggie', last_name: 'Simpson', email: 'maggie@aol.com', password: 'password')
+user_set << User.create!(first_name: 'Homer', last_name: 'Simpson', email: 'homer@aol.com', password: 'password', description: '28 years old, Software developer')
+user_set << User.create!(first_name: 'Marge', last_name: 'Simpson', email: 'marge@aol.com', password: 'password', description: '85 years old, AFL player')
+user_set << User.create!(first_name: 'Bart', last_name: 'Simpson', email: 'bart@aol.com', password: 'password', description: '18 years old, Student')
+user_set << User.create!(first_name: 'Lisa', last_name: 'Simpson', email: 'lisa@aol.com', password: 'password', description: '35 years old, Designer')
+user_set << User.create!(first_name: 'Maggie', last_name: 'Simpson', email: 'maggie@aol.com', password: 'password', description: '47 years old, Sales manager')
 
 
 puts 'Creating Skills'
