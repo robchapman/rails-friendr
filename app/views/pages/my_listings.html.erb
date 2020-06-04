@@ -5,24 +5,19 @@
   <div class="card mx-3 mb-3" style="width: 300px;">
     <%= cl_image_tag friend.photo.key, height: 300, width: 400, crop: :fill, class: "card-img-top" %>
     <div class="card-body">
-      <h5 class="card-title"><%= friend.name %>'s bookings</h5>
+      <h5 class="card-title"><%= link_to friend.name, friend_path(friend) %>'s bookings</h5>
       <% friend.bookings.each do |booking| %>
-      <p><%= booking.user.first_name + " " +booking.user.last_name %></p>
+      <h5><%= booking.user.first_name + " " +booking.user.last_name %></h5>
       <p>Start-time:<%= booking.start_time %></p>
       <p>End-time:<%= booking.end_time %></p>
-      <div class="btn btn-success d-flex justify-content-center m-3">
-        <%= link_to "See booking", booking_path(booking) %>
-      </div>
+        <%= link_to "See this booking", booking_path(booking), { :class=>"btn btn-primary btn-lg btn-block mb-5" } %>
       <% end %>
     </div>
-    <div class="btn btn-success d-flex justify-content-center m-3">
+    <button type="button" class="btn btn-warning btn-lg btn-block" data-toggle="modal" data-target="#exampleModal">
       <%= link_to "Edit My Friends", edit_friend_path(friend) %>
-    </div>
+    </button>
   </div>
   <% end %>
 </div>
 
-
-<div class="btn btn-success d-flex justify-content-center m-3">
-  <%= link_to "Back to the your dashboard", dashboard_path %>
-</div>
+<%= link_to "Back to the your dashboard", dashboard_path, { :class=>"btn btn-primary btn-lg btn-block mt-5" } %>

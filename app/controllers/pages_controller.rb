@@ -13,9 +13,6 @@ class PagesController < ApplicationController
 
   def my_listings; end
 
-  def my_profile
-  end
-
   private
 
   def set_friends

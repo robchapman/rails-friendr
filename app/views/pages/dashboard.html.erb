@@ -1,16 +1,16 @@
 <div class="cards-container d-flex flex-wrap justify-content-center">
-  <div class="card mx-3 mb-3 mt-5" style="width: 500px; height: 200px;">
-      <div class="card-body">
-        <h1><%= current_user.first_name %>'s Profile</h1>
-        <div class="btn btn-success d-flex flex-wrap justify-content-center mt-5">
-          <%= link_to "Edit my profile", my_profile_path %>
-        </div>
-      </div>
+  <div class="card mx-3 mb-3 mt-5" style="width: 500px;">
+    <div class="card-body">
+
+      <h1><%= current_user.first_name %>'s Profile</h1>
+
+      <h3>Descriotion: <%= current_user.description %></h3>
+        <%= link_to "Edit my profile", edit_user_registration_path, { :class=>"btn btn-primary btn-lg btn-block" } %>
     </div>
   </div>
-        <div class="btn btn-success d-flex justify-content-center m-3">
-          <%= link_to "My personal bookings", my_bookings_path %>
-        </div>
-        <div class="btn btn-success d-flex justify-content-center m-3">
-          <%= link_to "My Friend", my_listings_path %>
-        </div>
+</div>
+<br>
+<%= link_to "My personal bookings", my_bookings_path,  { :class=>"btn btn-primary btn-lg btn-block" }  %>
+<br>
+<br>
+<%= link_to "My Friend", my_listings_path,  { :class=>"btn btn-primary btn-lg btn-block" }   %>
