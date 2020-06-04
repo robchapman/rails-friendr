@@ -7,8 +7,11 @@
         <p>Booking Starts :  <%= @booking.start_time.strftime("#{@booking.start_time.day.ordinalize} %B %-l.%M%P") %></p>
         <p>Booking Ends : <%= @booking.end_time.strftime("#{@booking.start_time.day.ordinalize} %B %-l.%M%P")  %></p>
         <p>Total Session Cost :  <em>$<%= @booking.total_price %></em></p>
-        <div class = "d-flex justify-content-center mb-3">
-        <%= link_to "To my dashboard", dashboard_path, { :class=>"btn btn-primary" }  %>
+        <div class = "d-flex justify-content-around">
+        <%= link_to "Back to dashboard", dashboard_path, { :class=>"btn btn-primary" }  %>
+        <%= link_to "Back to booking page", my_bookings_path, { :class=>"btn btn-primary" }  %>
+        </div>
+
         </div>
 
       </div>

@@ -1,0 +1,18 @@
+
+  <div class="row justify-content-center mt-5">
+      <div class="col-sm-12 col-md-6 mt-3 card">
+        <h5 class="card-title text-center mt-3"><strong>Review</strong></h5>
+           <div class="card-info">
+
+      <%= simple_form_for [ @booking, @review ] do |f| %>
+        <%= f.input :content %>
+        <%= f.input :rating %>
+        <%= f.submit :submit%>
+
+      <% end %>
+    </div>
+    </div>
+  </div>
+
+
+
