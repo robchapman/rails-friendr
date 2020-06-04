@@ -13,17 +13,12 @@ class Friend < ApplicationRecord
   validates :description, presence: true
   validates :location, presence: true
   validates :price, presence: true, numericality: { only_integer: true }
+  geocoded_by :location
+  after_validation :geocode, if: :will_save_change_to_location?
 
   include PgSearch::Model
-    # pg_search_scope :global_search, against: [:name, :description],
-    # associated_against: {
-    #   skills: [:name],tags: [:name]
-    # },
-    # using: {
-    #   tsearch: { prefix: true, dictionary: "english" },
-    #   trigram: {},
-    #   dmetaphone: {}
-    # }
+    #   trigram ?
+    #   dmetaphone ?
     pg_search_scope :global_search, against: [:name, :description],
     associated_against: {
       skills: [:name],tags: [:name]
@@ -32,4 +27,4 @@ class Friend < ApplicationRecord
       tsearch: { prefix: true, dictionary: "english" }
     }
 end
-# , tag: :name
+

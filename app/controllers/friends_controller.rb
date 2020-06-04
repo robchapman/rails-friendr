@@ -1,13 +1,23 @@
 class FriendsController < ApplicationController
   before_action :set_friend, only: [:show, :destroy, :edit, :update]
   def index
-
-
     if params[:query].present?
-      @friends = Friend.global_search(params[:query])
+      @friends = Friend.global_search(params[:query]).select { |friend| friend.geocoded? }
     else
-      @friends = Friend.all
+      @friends = Friend.geocoded
     end
+=======
+    @friends = Friend.geocoded # returns flats with coordinates
+
+    @markers = @friends.map do |friend|
+      {
+        lat: friend.latitude,
+        lng: friend.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { friend: friend }),
+        image_url: helpers.asset_url('map_icon.png')
+      }
+
+    
   end
 
   def show

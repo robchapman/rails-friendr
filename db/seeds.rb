@@ -18,7 +18,7 @@ Tag.destroy_all
 
 # puts 'Creating Users'
 user_set = []
-user_set << User.create!(first_name: 'Homer', last_name: 'Simpson', email: 'homer@aol.com', password: 'password')
+user_set << User.create!(first_name: 'Homer', last_name: 'Simpson', email: 'homer@aol.com', password: 'password', description: 'Hey I am Homer. I live in CBD and work in tech. I can teach you about software development!!')
 user_set << User.create!(first_name: 'Marge', last_name: 'Simpson', email: 'marge@aol.com', password: 'password')
 user_set << User.create!(first_name: 'Bart', last_name: 'Simpson', email: 'bart@aol.com', password: 'password')
 user_set << User.create!(first_name: 'Lisa', last_name: 'Simpson', email: 'lisa@aol.com', password: 'password')
@@ -29,7 +29,7 @@ puts 'Creating Skills'
 skills = [
   "Karate", "Sewing", "Cooking", "Pep-talk", "Light conversation", "Deep Conversation",
   "Unlisenced therapy", "Fashion advice", "Wing-man", "Party-animal","Get-away driver",
-  "Rolling ciggies", "Break dancing", "Boomerang"
+  "Rolling ciggies", "Break dancing", "Boomerang", "Retrieving the paper"
 ]
 skill_set = []
 skills.each do |skill|
@@ -45,20 +45,105 @@ end
 
 puts "Creating Friends"
 friend_set = []
-10.times do
-  friend = Friend.create!(
-    name: Faker::TvShows::Friends.character,
-    location: Faker::TvShows::Friends.location,
-    description: Faker::TvShows::Friends.quote,
-    price: (rand * 100).floor,
+# 10.times do
+#   friend = Friend.create!(
+#     name: Faker::TvShows::Friends.character,
+#     location: Faker::Address.city,
+#     description: Faker::TvShows::Friends.quote,
+#     price: (rand * 100).floor,
+#     user: user_set.sample
+#     )
+#   file = URI.open("https://cdn.vox-cdn.com/thumbor/sK3gMTENF_LR1DhAUl9e3V_5jC4=/0x0:2592x2017/1200x800/filters:focal(1089x801:1503x1215)/cdn.vox-cdn.com/uploads/chorus_image/image/65282724/friendscast.0.0.1429818191.0.jpg")
+#   friend.photo.attach(io: file, filename: "#{friend.name}.jpg", content_type: 'image/jpg')
+#   friend_set << friend
+#   friend.save!
+#   puts "added #{friend.name} with photo"
+# end
+
+puts "Creating Rex"
+  rex = Friend.create!(
+    name: "Rex",
+    location: "Fawkner Park",
+    description: "A loyal labrador who will fetch your paper and follow you around the house",
+    price: "30",
     user: user_set.sample
     )
-  file = URI.open("https://cdn.vox-cdn.com/thumbor/sK3gMTENF_LR1DhAUl9e3V_5jC4=/0x0:2592x2017/1200x800/filters:focal(1089x801:1503x1215)/cdn.vox-cdn.com/uploads/chorus_image/image/65282724/friendscast.0.0.1429818191.0.jpg")
-  friend.photo.attach(io: file, filename: "#{friend.name}.jpg", content_type: 'image/jpg')
-  friend_set << friend
-  friend.save!
-  puts "added #{friend.name} with photo"
-end
+  file = File.open('app/assets/images/lab.jpeg')
+  rex.photo.attach(io: file, filename: "#{rex.name}.jpg", content_type: 'image/jpg')
+  friend_set << rex
+  rex.save!
+  puts "added #{rex.name} with photo"
+
+puts "Creating Grandma"
+  betty = Friend.create!(
+    name: "Betty",
+    location: "126 Cubitt St, Cremorne",
+    description: "Grandma, she will knit you socks and bake you cakes",
+    price: "130",
+    user: user_set.sample
+    )
+  file = File.open('app/assets/images/grandma.jpeg')
+  betty.photo.attach(io: file, filename: "#{betty.name}.jpg", content_type: 'image/jpg')
+  friend_set << betty
+  betty.save!
+  puts "added #{betty.name} with photo"
+
+
+puts "Creating Marty"
+  marty = Friend.create!(
+    name: "Marty",
+    location: "Melbourne",
+    description: "The take anywhere friend. Great with parents, life of the party",
+    price: "70",
+    user: user_set.sample
+    )
+  file = File.open('app/assets/images/marty.jpeg')
+  marty.photo.attach(io: file, filename: "#{marty.name}.jpg", content_type: 'image/jpg')
+  friend_set << marty
+  marty.save!
+  puts "added #{marty.name} with photo"
+
+puts "Luke Goodlooking"
+  luke = Friend.create!(
+    name: "Luke Goodlooking",
+    location: "South Yarra",
+    description: "Your new hottest accessory",
+    price: "570",
+    user: user_set.sample
+    )
+  file = File.open('app/assets/images/model.png')
+  luke.photo.attach(io: file, filename: "#{luke.name}.jpg", content_type: 'image/jpg')
+  friend_set << luke
+  luke.save!
+  puts "added #{luke.name} with photo"
+
+puts "Sarah"
+  sarah = Friend.create!(
+    name: "Sarah",
+    location: "South Yarra",
+    description: "I give really great advise, always down for a chat",
+    price: "70",
+    user: user_set.sample
+    )
+  file = File.open('app/assets/images/sarah.jpeg')
+  sarah.photo.attach(io: file, filename: "#{sarah.name}.jpeg", content_type: 'image/jpg')
+  friend_set << sarah
+  sarah.save!
+  puts "added #{sarah.name} with photo"
+
+puts "Joey"
+ joey = Friend.create!(
+    name: "Joey Tribbiani",
+    location: "130 Cubitt St, Cremorne",
+    description: "Well, the fridge broke, so I had to eat everything.",
+    price: "270",
+    user: user_set.sample
+    )
+  file = File.open('app/assets/images/joey.jpg')
+  joey.photo.attach(io: file, filename: "joey.jpg", content_type: 'image/jpg')
+  friend_set << joey
+  joey.save!
+  puts "added #{joey.name} with photo"
 
 # friend_set << Friend.create!(name: "A Mans Best Friend", description: "A loyal labrador who will fetch your paper and follow you around the house", location: "South Yarra", price: "30", user: user_set.sample)
 # friend_set << Friend.create!(name: "Betty", description: "Grandma, she will knit you socks and bake you cakes", location: "Lovely Hill", price: "70", user: user_set.sample)

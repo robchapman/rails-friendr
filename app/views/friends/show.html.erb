@@ -11,6 +11,15 @@
           <li class="list-group-item"><p>Skills: <%= @friend.skills %></p></li>
           <li class="list-group-item"><p>Price: <%= @friend.price %></p></li>
           <li class="list-group-item"><p>Location: <%= @friend.location  %></li>
+
+          <li class="list-group-item"><p>Reviews</li>
+             <div class="text-center mt-3">
+            <% @friend.reviews.each do |review|   %>
+               <p><%= review.content %></p><p>
+                <p>Rating : <%= review.rating %></p>
+
+              <% end %>
+            </div>
         </ul>
         <div class="card-body">
 
