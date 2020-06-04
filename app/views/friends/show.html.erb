@@ -1,4 +1,4 @@
-<div class="container align-items-center d-flex">
+<div class="justify-content-center mt-3 d-flex">
   <div class="row">
      <div class="col-sm-12 col-md-6">
        <div class="card" style="width: 18rem;">
@@ -10,7 +10,7 @@
         <ul class="list-group list-group-flush">
           <li class="list-group-item">
             <% @friend.skills.each do |skill| %>
-            <p>Skills:<%= skill.name %></p>
+            <p>Skills: <%= skill.name %></p>
             <% end %></li>
           <li class="list-group-item"><p>Price: <%= @friend.price %></p></li>
           <li class="list-group-item"><p>Location: <%= @friend.location  %></li>
@@ -31,12 +31,15 @@
         </div>
       </div>
   </div>
-  <%= render 'calender', bookings: @friend.bookings %>
+
 </div>
+<div style="width:50%;" class='ml-2'>
     <div id="map"
        style="width: 100%; height: 600px;"
        data-markers="<%= @markers.to_json %>"
        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>" class="m-3">
-  </div>
+    </div>
+    <%= render 'calender', bookings: @friend.bookings %>
+</div>
 </div>
 
