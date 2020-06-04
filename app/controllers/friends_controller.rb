@@ -6,7 +6,7 @@ class FriendsController < ApplicationController
     else
       @friends = Friend.geocoded
     end
-=======
+
     @friends = Friend.geocoded # returns flats with coordinates
 
     @markers = @friends.map do |friend|
@@ -17,7 +17,7 @@ class FriendsController < ApplicationController
         image_url: helpers.asset_url('map_icon.png')
       }
 
-    
+
   end
 
   def show
@@ -65,4 +65,3 @@ private
     params.require(:friend).permit(:name, :description, :photo, :price, :location)
   end
 end
-
