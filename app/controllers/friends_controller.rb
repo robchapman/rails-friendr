@@ -14,7 +14,13 @@ class FriendsController < ApplicationController
   end
 
   def show
-
+    @markers =
+      [{
+        lat: @friend.latitude,
+        lng: @friend.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { friend: @friend }),
+        image_url: helpers.asset_url('map_icon.png')
+      }]
   end
 
   def new
