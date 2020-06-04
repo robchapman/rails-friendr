@@ -18,7 +18,7 @@ Tag.destroy_all
 
 # puts 'Creating Users'
 user_set = []
-user_set << User.create!(first_name: 'Homer', last_name: 'Simpson', email: 'homer@aol.com', password: 'password')
+user_set << User.create!(first_name: 'Homer', last_name: 'Simpson', email: 'homer@aol.com', password: 'password', description: 'Hey I am Homer. I live in CBD and work in tech. I can teach you about software development!!')
 user_set << User.create!(first_name: 'Marge', last_name: 'Simpson', email: 'marge@aol.com', password: 'password')
 user_set << User.create!(first_name: 'Bart', last_name: 'Simpson', email: 'bart@aol.com', password: 'password')
 user_set << User.create!(first_name: 'Lisa', last_name: 'Simpson', email: 'lisa@aol.com', password: 'password')
