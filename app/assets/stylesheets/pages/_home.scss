@@ -1,3 +1,14 @@
 .landing-page{
-  background-image: url("../app/assets/images/landingpage.jpg");
+  background-image: asset-data-url("landingpage.jpg")
+}
+
+.landing-page-side-bar{
+  background: rgb(255,132,132);
+background: linear-gradient(90deg, rgba(255,132,132,1) 0%, rgba(255,155,132,1) 25%, rgba(255,205,132,1) 75%);
+}
+
+.landing-page h1 {
+  color: white;
+  font-family: 'Roboto', sans-serif !important;
+
 }

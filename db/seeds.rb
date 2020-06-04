@@ -229,19 +229,19 @@ puts "Luke Goodlooking"
   luke.save!
   puts "added #{luke.name} with photo"
 
-puts "Sarah"
-  sarah = Friend.create!(
-    name: "Sarah",
+puts "Shiela"
+  shiela = Friend.create!(
+    name: "Shiela",
     location: "South Yarra",
-    description: "I give really great advise, always down for a chat",
+    description: "I would go to Mordor with you",
     price: "70",
     user: user_set.sample
     )
-  file = File.open('app/assets/images/sarah.jpeg')
-  sarah.photo.attach(io: file, filename: "#{sarah.name}.jpeg", content_type: 'image/jpg')
-  friend_set << sarah
-  sarah.save!
-  puts "added #{sarah.name} with photo"
+  file = File.open('app/assets/images/shiela.jpeg')
+  shiela.photo.attach(io: file, filename: "#{shiela.name}.jpeg", content_type: 'image/jpg')
+  friend_set << shiela
+  shiela.save!
+  puts "added #{shiela.name} with photo"
 
 puts "Joey"
  joey = Friend.create!(
@@ -265,10 +265,10 @@ puts "Assigning skills to Friends"
 
 friend_set.each do |friend|
   skill_set.sample((rand * 5).floor).each do |skill|
-    FriendSkill.create!(friend: friend, skill: skill)
-  end
+
+     FriendSkill.create!(friend: friend, skill: skill)
+   end
 end
-# FriendSkill.create!(friend: ross, skill: "Karate")
 
 puts "Assigning tags to Friends"
 friend_set.each do |friend|
@@ -297,7 +297,10 @@ friend_set.each do |friend|
 end
 
 puts 'Creating Reviews'
-comments = ["Great Service!", "Very dissapointing", "I want my money back!", "Fine, I guess"]
+comments = ["Great Service!", "Very dissapointing", "I want my money back!",
+ "Fine, I guess", "That guy is legend"," that guy disgraced me", "What a jerk",
+  "Sweetest fake friend ever", "poor fella", "childish person", "not worth it", "I cant wait to meet with her again",
+  "creepy fella", "10 / 10" ,"Mentally sick" , "call himself drug addict", "dont book ,save your money!!"]
 booking_set.each do |booking|
   if rand > 0.5
     Review.create!(
