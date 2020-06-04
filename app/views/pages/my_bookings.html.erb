@@ -6,6 +6,9 @@
     <div class="card-body">
       <h5 class="card-title">Booking with <%= booking.friend.name %></h5>
       <p><%= booking.start_time %></p>
+      <div class = "d-flex justify-content-center mb-1">
+      <%=  link_to "Review",  new_booking_review_path(booking), { :class=>"btn btn-primary rounded-pill align-items-center" }  %>
+    </div>
     </div>
   </div>
   <% end %>

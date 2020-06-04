@@ -14,6 +14,10 @@ Rails.application.routes.draw do
       get :bookings #Bookings summary page for provider
     end
   end
-  resources :bookings , only: [:show, :edit, :destroy]
+
+  resources :bookings , only: [:show, :edit, :destroy] do
+    resources :reviews ,  only: [:new, :create]
+   end
+
     #ADD DELETE AND EDIT BOOKING LATER
 end
