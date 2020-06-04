@@ -193,11 +193,12 @@ puts "Joey"
 
 puts "Assigning skills to Friends"
 
-friend_set.each do |friend|
-  skill_set.sample((rand * 5).floor).each do |skill|
-    FriendSkill.create!(friend: friend, skill: skill)
-  end
-end
+# friend_set.each do |friend|
+#   skill_set.sample((rand * 5).floor).each do |skill|
+#     FriendSkill.create!(friend: friend, skill: skill)
+#   end
+# end
+FriendSkill.create!(friend: ross, skill: "Karate")
 
 puts "Assigning tags to Friends"
 friend_set.each do |friend|
