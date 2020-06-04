@@ -15,14 +15,84 @@ User.destroy_all
 Skill.destroy_all
 Tag.destroy_all
 
-
-# puts 'Creating Users'
+puts 'Creating Users'
 user_set = []
-user_set << User.create!(first_name: 'Homer', last_name: 'Simpson', email: 'homer@aol.com', password: 'password', description: '28 years old, Software developer')
-user_set << User.create!(first_name: 'Marge', last_name: 'Simpson', email: 'marge@aol.com', password: 'password', description: '85 years old, AFL player')
-user_set << User.create!(first_name: 'Bart', last_name: 'Simpson', email: 'bart@aol.com', password: 'password', description: '18 years old, Student')
-user_set << User.create!(first_name: 'Lisa', last_name: 'Simpson', email: 'lisa@aol.com', password: 'password', description: '35 years old, Designer')
-user_set << User.create!(first_name: 'Maggie', last_name: 'Simpson', email: 'maggie@aol.com', password: 'password', description: '47 years old, Sales manager')
+
+puts "Creating Homer"
+homer = User.create!(
+  first_name: 'Homer',
+  last_name: 'Simpson',
+  email: 'homer@aol.com',
+  password: 'password',
+  description: '28 years old, Software developer'
+  )
+file = File.open('app/assets/images/homer.jpg')
+homer.photo.attach(io: file, filename: "#{homer.first_name}.jpg", content_type: 'image/jpg')
+user_set << homer
+homer.save!
+puts "added #{homer.first_name} with photo"
+
+puts "Creating Marge"
+marge = User.create!(
+  first_name: 'Marge',
+  last_name: 'Simpson',
+  email: 'marge@aol.com',
+  password: 'password',
+  description: '85 years old, Body builder'
+  )
+file = File.open('app/assets/images/marge.jpg')
+marge.photo.attach(io: file, filename: "#{marge.first_name}.jpg", content_type: 'image/jpg')
+user_set << marge
+marge.save!
+puts "added #{marge.first_name} with photo"
+
+puts "Creating Bart"
+bart = User.create!(
+  first_name: 'Bart',
+  last_name: 'Simpson',
+  email: 'bart@aol.com',
+  password: 'password',
+  description: '25 years old, Student'
+  )
+file = File.open('app/assets/images/bart.jpg')
+bart.photo.attach(io: file, filename: "#{bart.first_name}.jpg", content_type: 'image/jpg')
+user_set << bart
+bart.save!
+puts "added #{bart.first_name} with photo"
+
+puts "Creating Lisa"
+lisa = User.create!(
+  first_name: 'Lisa',
+  last_name: 'Simpson',
+  email: 'lisa@aol.com',
+  password: 'password',
+  description: '35 years old, Designer'
+  )
+file = File.open('app/assets/images/lisa.jpg')
+lisa.photo.attach(io: file, filename: "#{lisa.first_name}.jpg", content_type: 'image/jpg')
+user_set << lisa
+lisa.save!
+puts "added #{lisa.first_name} with photo"
+
+puts "Creating Maggie"
+maggie = User.create!(
+  first_name: 'Maggie',
+  last_name: 'Simpson',
+  email: 'maggie@aol.com',
+  password: 'password',
+  description: '31 years old, Sales manager'
+  )
+file = File.open('app/assets/images/maggie.jpg')
+maggie.photo.attach(io: file, filename: "#{maggie.first_name}.jpg", content_type: 'image/jpg')
+user_set << maggie
+maggie.save!
+puts "added #{maggie.first_name} with photo"
+# puts 'Creating Users'
+# user_set << User.create!(first_name: 'Homer', last_name: 'Simpson', email: 'homer@aol.com', password: 'password', description: '28 years old, Software developer')
+# user_set << User.create!(first_name: 'Marge', last_name: 'Simpson', email: 'marge@aol.com', password: 'password', description: '85 years old, AFL player')
+# user_set << User.create!(first_name: 'Bart', last_name: 'Simpson', email: 'bart@aol.com', password: 'password', description: '18 years old, Student')
+# user_set << User.create!(first_name: 'Lisa', last_name: 'Simpson', email: 'lisa@aol.com', password: 'password', description: '35 years old, Designer')
+# user_set << User.create!(first_name: 'Maggie', last_name: 'Simpson', email: 'maggie@aol.com', password: 'password', description: '31 years old, Sales manager')
 
 
 puts 'Creating Skills'
@@ -193,12 +263,12 @@ puts "Joey"
 
 puts "Assigning skills to Friends"
 
-# friend_set.each do |friend|
-#   skill_set.sample((rand * 5).floor).each do |skill|
-#     FriendSkill.create!(friend: friend, skill: skill)
-#   end
-# end
-FriendSkill.create!(friend: ross, skill: "Karate")
+friend_set.each do |friend|
+  skill_set.sample((rand * 5).floor).each do |skill|
+    FriendSkill.create!(friend: friend, skill: skill)
+  end
+end
+# FriendSkill.create!(friend: ross, skill: "Karate")
 
 puts "Assigning tags to Friends"
 friend_set.each do |friend|
