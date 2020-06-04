@@ -9,10 +9,10 @@ class Booking < ApplicationRecord
 
   validate :end_date_must_be_before_start_date
 
-  #end date and start date right way round
+  # end date and start date right way round
   def end_date_must_be_before_start_date
-    if start_time > end_time
-      errors.add(:end_date, "End Date must be after Start Date")
-    end
+    return unless start_time && end_time
+
+    errors.add(:end_time, "End Time must be after Start Time") if start_time > end_time
   end
 end

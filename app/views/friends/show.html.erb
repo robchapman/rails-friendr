@@ -25,7 +25,7 @@
             </div>
         </ul>
         <div class="card-body">
-          <%= render 'calender', bookings: @friend.bookings %>
+          <%= render '/friends/calender', bookings: @friend.bookings %>
           <%= render '/bookings/new_form', booking: @booking, friend: @friend %>
         </div>
       </div>
