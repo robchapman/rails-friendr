@@ -4,7 +4,7 @@ class FriendsController < ApplicationController
 
 
     if params[:query].present?
-      @friends = Friend.where(title: params[:query])
+      @friends = Friend.global_search(params[:query])
     else
       @friends = Friend.all
     end
