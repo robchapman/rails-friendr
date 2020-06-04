@@ -227,7 +227,10 @@ friend_set.each do |friend|
 end
 
 puts 'Creating Reviews'
-comments = ["Great Service!", "Very dissapointing", "I want my money back!", "Fine, I guess"]
+comments = ["Great Service!", "Very dissapointing", "I want my money back!",
+ "Fine, I guess", "That guy is legend"," that guy disgraced me", "What a jerk",
+  "Sweetest fake friend ever", "poor fella", "childish person", "not worth it", "I cant wait to meet with her again",
+  "creepy fella", "10 / 10" ,"Mentally sick" , "call himself drug addict", "dont book ,save your money!!"]
 booking_set.each do |booking|
   if rand > 0.5
     Review.create!(

@@ -6,7 +6,7 @@ class FriendsController < ApplicationController
     else
       @friends = Friend.geocoded
     end
-
+    # friends.near(location search)
     @markers = @friends.map do |friend|
     {
       lat: friend.latitude,
@@ -19,6 +19,7 @@ class FriendsController < ApplicationController
   end
 
   def show
+    @booking = Booking.new
     @markers =
       [{
         lat: @friend.latitude,
@@ -53,11 +54,6 @@ class FriendsController < ApplicationController
   def destroy
     @friend.destroy
     redirect_to friends_path
-  end
-
-  def bookings
-
-    # TODO
   end
 
 private
