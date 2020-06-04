@@ -22,12 +22,10 @@
             </div>
         </ul>
         <div class="card-body">
-
-          <%= link_to "Book Now", new_friend_booking_path(@friend)  %>
-
+          <%= render 'calender', bookings: @friend.bookings %>
+          <%= render '/bookings/new_form', booking: @booking, friend: @friend %>
         </div>
       </div>
   </div>
-  <%= render 'calender', bookings: @friend.bookings %>
 </div>
 
