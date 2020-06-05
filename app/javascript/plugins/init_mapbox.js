@@ -14,12 +14,11 @@ const initMapbox = () => {
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
     const map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/georgiebrown/ckb1j8b5709cs1inr1g8vb22x',
-
+      style: 'mapbox://styles/georgiebrown/ckb08uawl0irm1ip4ztz870ut',
     });
-      const markers = JSON.parse(mapElement.dataset.markers);
+  const markers = JSON.parse(mapElement.dataset.markers);
   markers.forEach((marker) => {
-    const popup = new mapboxgl.Popup().setHTML(marker.infoWindow);
+  const popup = new mapboxgl.Popup().setHTML(marker.infoWindow);
 
   const element = document.createElement('div');
   element.className = 'marker';
@@ -34,12 +33,12 @@ const initMapbox = () => {
       .addTo(map);
 
   });
-  // map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
-  //                                     mapboxgl: mapboxgl }));
-  fitMapToMarkers(map, markers);
+  map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
+                                      mapboxgl: mapboxgl }));
+  if (markers.length != 0) {
+    fitMapToMarkers(map, markers);
+  }
   }
 };
-
-
 
 export { initMapbox };

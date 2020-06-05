@@ -6,7 +6,7 @@ class FriendsController < ApplicationController
     else
       @friends = Friend.geocoded
     end
-    @friends = @friends.near(params[:query_location], 5) if params[:query_location].present?
+    @friends = @friends.near(params[:query_location], 5) if params[:query_location].present? && !@friends.empty?
     # friends.near(location search)
     @markers = @friends.map do |friend|
     {
@@ -16,7 +16,6 @@ class FriendsController < ApplicationController
       image_url: helpers.asset_url('map_icon.png')
     }
     end
-
   end
 
   def show
