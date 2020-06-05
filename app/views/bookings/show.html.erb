@@ -1,3 +1,4 @@
+
 <div class=" container align-items-center mt-5 mb-5">
   <div>
    <p> <%= link_to "Back to dashboard", dashboard_path  %></p>
@@ -11,7 +12,8 @@
   <div class="row justify-content-md-center mt-3 mb-3">
 
     <div class="card">
-    <img height="350" width="100" class="card-img-top" src="http://res.cloudinary.com/daqhmzr2j/image/upload/c_fill,h_350,w_350/emcxas671ze805h9vud48inb459m">
+     <%= cl_image_tag @booking.friend.photo.key, height: 300, width: 400, crop: :fill %>
+   <!--  <img height="350" width="100" class="card-img-top" src="http://res.cloudinary.com/daqhmzr2j/image/upload/c_fill,h_350,w_350/emcxas671ze805h9vud48inb459m"> -->
     </div>
 
     <div class="col-md-6 flex-column justify-space-around">
