@@ -26,7 +26,7 @@ require("channels")
 import "bootstrap";
 import { initModal } from '../components/modal';
 import { initMapbox } from '../plugins/init_mapbox';
-
+import { initFlatpickr } from '../plugins/init_flatpickr';
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -36,4 +36,5 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
   initMapbox();
   // initModal();
+  initFlatpickr();
 });
