@@ -20,35 +20,27 @@
         <table class="table">
           <thead>
             <tr>
+              <th scope="col">#</th>
               <th scope="col">Name</th>
               <th scope="col">Start Date</th>
 
             </tr>
           </thead>
           <tbody>
+            <% num = 1  %>
             <% current_user.bookings.each do |booking|  %>
               <tr>
-                <th scope="row">1</th>
-                <td> <%= booking.friend.name  %></td>
-                <td></td>
+                <th scope="row"> <%= num  %></th>
+                <td> <%= link_to "#{booking.friend.name}", booking_path(booking) %></td>
+                <td><%= booking.start_time.strftime("#{booking.start_time.day.ordinalize} %B %-l.%M%P") %></td>
                 <td></td>
               </tr>
 
-            <tr>
-              <th scope="row">2</th>
-              <td><%= booking.start_time.strftime("#{booking.start_time.day.ordinalize} %B %-l.%M%P") %></td>
-            </tr>
+              <% num += 1  %>
             <% end %>
-            <tr>
-              <th scope="row">3</th>
-              <td></td>
-
-
-
-
-            </tr>
           </tbody>
           </table>
+
        </div>
      </div>
   </div>
@@ -59,6 +51,4 @@
 <%= link_to "My Friend", my_listings_path,  { :class=>"btn btn-primary btn-sm rounded-pill" }   %>
 
 </div>
-
-
 
