@@ -6,13 +6,15 @@
     <div class="card-body">
       <h1><%= current_user.first_name %></h1>
       <h5><%= current_user.description %></h5>
-        <%= link_to "Edit my profile", edit_user_profile_path(current_user), { :class=>"btn btn-primary btn-lg btn-block" } %>
-        <%= link_to "Edit my account details", edit_user_registration_path, { :class=>"btn btn-primary btn-lg btn-block" } %>
+        <%= link_to "Edit my profile", edit_user_profile_path(current_user), { :class=>"btn btn-primary btn-lg btn-block rounded-pill" } %>
+        <%= link_to "Edit my account details", edit_user_registration_path, { :class=>"btn btn-primary btn-lg btn-block rounded-pill" } %>
     </div>
   </div>
 </div>
 <br>
-<%= link_to "My personal bookings", my_bookings_path,  { :class=>"btn btn-primary btn-lg btn-block rounded-pill" }  %>
+<div class="text-center">
+<%= link_to "My personal bookings", my_bookings_path,  { :class=>"btn btn-primary btn-lg rounded-pill" }  %>
 <br>
 <br>
-<%= link_to "My Friend", my_listings_path,  { :class=>"btn btn-primary btn-lg btn-block rounded-pill" }   %>
+<%= link_to "My Friend", my_listings_path,  { :class=>"btn btn-primary btn-lg rounded-pill" }   %>
+</div>
