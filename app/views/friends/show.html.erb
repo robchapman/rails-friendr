@@ -33,6 +33,7 @@
         <div class="card-body">
           <%= render 'show_page_map' %>
           <%= render '/bookings/new_form', booking: @booking, friend: @friend %>
+          <br>
           <%= render 'calender', bookings: @friend.bookings %>
         </div>
       </div>
