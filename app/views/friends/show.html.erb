@@ -28,14 +28,10 @@
           <%= link_to "Book Now", new_friend_booking_path(@friend), { :class=>"btn btn-primary rounded-pill ml-4" }  %>
         </div>
       </div>
-  </div>
-          <%= render 'calender', bookings: @friend.bookings %>
-          <%= render '/bookings/new_form', booking: @booking, friend: @friend %>
-        </div>
-      </div>
-  </div>
+    </div>
 
-</div>
+          <%= render '/bookings/new_form', booking: @booking, friend: @friend %>
+  </div>
 <div style="width:50%;" class='ml-2'>
     <div id="map"
        style="width: 100%; height: 600px;"
@@ -45,4 +41,5 @@
     <%= render 'calender', bookings: @friend.bookings %>
 </div>
 </div>
+
 

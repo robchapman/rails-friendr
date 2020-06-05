@@ -13,12 +13,14 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.friend = @friend
     @booking.user = current_user
-    @booking.total_price = (@booking.end_time - @booking.start_time) / 60 / 60 * @friend.price
+    if @booking.start_time && @booking.end_time
+      @booking.total_price = (@booking.end_time - @booking.start_time) / 60 / 60 * @friend.price
+    end
     @booking.status = "pending"
       if @booking.save
         redirect_to booking_path(@booking)
       else
-        render 'new'
+        render 'friends/show'
       end
   end
 

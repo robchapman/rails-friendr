@@ -8,10 +8,10 @@
       <h5 class="card-title"><%= link_to friend.name, friend_path(friend) %></h5>
       <% friend.bookings.each do |booking| %>
       <h5><%= booking.user.first_name + " " +booking.user.last_name %></h5>
-      <p>Start-time:<%= booking.start_time %></p>
-      <p>End-time:<%= booking.end_time %></p>
-        <%= link_to "See this booking", booking_path(booking), { :class=>"btn btn-primary btn-lg btn-block mb-3 rounded-pill" } %>
-        <hr>
+        <p>Booking status : <%= booking.status.capitalize %></p>
+        <p>Booking Starts :  <%= booking.start_time.strftime("#{booking.start_time.day.ordinalize} %B %-l.%M%P") %></p>
+        <p>Booking Ends : <%= booking.end_time.strftime("#{booking.start_time.day.ordinalize} %B %-l.%M%P")  %></p>
+        <%= link_to "See this booking", booking_path(booking), { :class=>"btn btn-primary btn-lg btn-block mb-5" } %>
       <% end %>
     </div>
       <%= link_to "Edit My Friend", edit_friend_path(friend), { :class=>"btn btn-warning btn-lg btn-block mt-3 rounded-pill" } %>
