@@ -24,8 +24,9 @@ $border-radius-sm: 2px;
 
 // Override other variables below!
 .btn-primary{
- background: #181856 !important;
+ background: #a7c7ea !important;
  border-color: white !important;
+
 
 }
 
@@ -40,7 +41,8 @@ $border-radius-sm: 2px;
 }
 
 .btn-primary:hover{
-  color: #181856 !important;
+  color: #a7c7ea !important;
   background: white !important;
   transition: 1s;
+  border: 2px solid #a7c7ea !important;
 }
