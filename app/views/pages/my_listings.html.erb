@@ -1,25 +1,42 @@
 <h1 class="mt-3">Browse My friends</h1>
 
-<div class="cards-container d-flex flex-wrap justify-content-center">
+<div class="cards-container">
   <% @friends.each do |friend| %>
-  <div class="card mx-3 mb-3" style="width: 300px;">
-    <%= cl_image_tag friend.photo.key, height: 300, width: 400, crop: :fill, class: "card-img-top" %>
-    <div class="card-body">
-      <h5 class="card-title"><%= link_to friend.name, friend_path(friend) %></h5>
-      <% friend.bookings.each do |booking| %>
-      <h5><%= booking.user.first_name + " " +booking.user.last_name %></h5>
-        <p>Booking status : <%= booking.status.capitalize %></p>
-        <p>Booking Starts :  <%= booking.start_time.strftime("#{booking.start_time.day.ordinalize} %B %-l.%M%P") %></p>
-        <p>Booking Ends : <%= booking.end_time.strftime("#{booking.start_time.day.ordinalize} %B %-l.%M%P")  %></p>
-        <%= link_to "See this booking", booking_path(booking), { :class=>"btn btn-primary btn-lg btn-block mb-5" } %>
-      <% end %>
-    </div>
-      <%= link_to "Edit My Friend", edit_friend_path(friend), { :class=>"btn btn-warning btn-lg btn-block mt-3 rounded-pill" } %>
-      <br>
-      <%= link_to "Delete Friend", friend_path(friend), method: :delete %>
 
+  <div class="card mb-3 p-1">
+    <div class="row">
+      <div class="col-4">
+        <%= cl_image_tag friend.photo.key, height: 200, width: 246, crop: :fill, class: "img-fluid w-100 mb-3" %>
+        <br>
+        <h3 class="card-title px-2 text-center"><%= link_to friend.name, friend_path(friend) %></h3>
+        <div class="d-flex justify-content-around">
+          <%= link_to "Edit My Friend", edit_friend_path(friend), class: "btn btn-outline-warning btn-sm rounded-pill" %>
+          <%= link_to "Delete Friend", friend_path(friend), method: :delete, class: "btn btn-outline-danger btn-sm rounded-pill" %>
+        </div>
+      </div>
+
+      <div class="col-8">
+        <div class="card-body">
+              <h3 class="card-title pb-3 text-center">Bookings</h3>
+          <div class="row">
+            <% friend.bookings.each do |booking| %>
+            <div class="col-6">
+              <h5><%= booking.user.first_name + " " +booking.user.last_name %></h5>
+              <p>Booking status : <%= booking.status.capitalize %></p>
+              <p>Booking Starts :  <%= booking.start_time.strftime("#{booking.start_time.day.ordinalize} %B %-l.%M%P") %></p>
+              <p>Booking Ends : <%= booking.end_time.strftime("#{booking.start_time.day.ordinalize} %B %-l.%M%P")  %></p>
+              <%= link_to "See this booking", booking_path(booking), { :class=>"btn btn-primary btn-lg btn-block mt-5 rounded-pill" } %>
+            </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+
   <% end %>
 </div>
 
-<%= link_to "Back to the your dashboard", dashboard_path, { :class=>"btn btn-primary btn-lg btn-block mt-5 rounded-pill" } %>
+<div class="text-center">
+  <%= link_to "Back to the your dashboard", dashboard_path, { :class=>"btn btn-primary btn-lg mt-5 rounded-pill" } %>
+</div>
