@@ -22,9 +22,9 @@
             <% friend.bookings.each do |booking| %>
             <div class="col-6">
               <h5><%= booking.user.first_name + " " +booking.user.last_name %></h5>
-              <p>Booking status : <%= booking.status.capitalize %></p>
-              <p>Booking Starts :  <%= booking.start_time.strftime("#{booking.start_time.day.ordinalize} %B %-l.%M%P") %></p>
-              <p>Booking Ends : <%= booking.end_time.strftime("#{booking.start_time.day.ordinalize} %B %-l.%M%P")  %></p>
+              <p>Status : <%= booking.status.capitalize %></p>
+              <p>Starts :  <%= booking.start_time.strftime("#{booking.start_time.day.ordinalize} %B %-l.%M%P") %></p>
+              <p>Ends : <%= booking.end_time.strftime("#{booking.start_time.day.ordinalize} %B %-l.%M%P")  %></p>
               <%= link_to "See this booking", booking_path(booking), { :class=>"btn btn-primary btn-lg btn-block mt-5 rounded-pill" } %>
             </div>
             <% end %>
