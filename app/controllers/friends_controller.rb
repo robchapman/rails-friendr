@@ -2,11 +2,12 @@ class FriendsController < ApplicationController
   before_action :set_friend, only: [:show, :destroy, :edit, :update]
   def index
     if params[:query_attributes].present?
-      @friends = Friend.global_search(params[:query_attributes]).select { |friend| friend.geocoded? }
+      @friends = Friend.geocoded
+      @friends = Friend.global_search(params[:query_attributes])
     else
       @friends = Friend.geocoded
     end
-    @friends = @friends.near(params[:query_location], 5) if params[:query_location].present? && !@friends.empty?
+    @friends = @friends.near(params[:query_location], 5) if (params[:query_location].present? && !@friends.empty?)
     # friends.near(location search)
     @markers = @friends.map do |friend|
     {
