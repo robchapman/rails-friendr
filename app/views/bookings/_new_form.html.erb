@@ -1,23 +1,20 @@
-<div class="container">
+
+<div class="d-flex justify-content-center" id='friend-booking-dates' data-unavailable="<%= friend.unavailable_dates.to_json %>">
+  <%= simple_form_for [ friend, booking ] do |f| %>
   <div class="row">
-    <div class="col-sm-12 col-md-6">
-      <div id='friend-booking-dates' data-unavailable="<%= friend.unavailable_dates.to_json %>">
-      <%= simple_form_for [ friend, booking ] do |f| %>
-      <div class="row">
-        <div class="col">
-          <%= f.input :start_time, as: :string, type: :text %>
-        </div>
-        <div class="col">
-          <%= f.input :end_time, as: :string, type: :text %>
-        </div>
-      </div>
-      <div class="row justify-content-center">
-        <div class="col">
-          <%= f.submit "Book now", class: "btn btn-primary" %>
-        </div>
-      </div>
-      <% end %>
-      </div>
-   </div>
+    <div class="col">
+      <%= f.input :start_time, as: :string, type: :text %>
+    </div>
+    <div class="col">
+      <%= f.input :end_time, as: :string, type: :text %>
+    </div>
   </div>
+  <div class="row justify-content-center">
+    <div class="col">
+      <%= f.submit "Book now", class: "btn btn-primary" %>
+    </div>
+  </div>
+  <% end %>
 </div>
+
+

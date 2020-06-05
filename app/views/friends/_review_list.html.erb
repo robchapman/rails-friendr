@@ -1,0 +1,18 @@
+<h3 class="text-center mt-4 mb-2">Reviews</h3>
+  <% @friend.reviews.each do |review| %>
+      <div class="d-flex">
+        <div class="flex-grow-0 flex-shrink-0 mr-3">
+          <p>
+            <% review.rating.times do %>
+              <%= icon('fas', 'star m-1 2em') %>
+            <% end %>
+            <% (5 - review.rating).times do %>
+              <%= icon('far', 'star m-1 2em') %>
+            <% end %>
+          </p>
+        </div>
+        <div>
+          <p><%= "#{review.content}" %></p>
+        </div>
+      </div>
+  <% end %>
