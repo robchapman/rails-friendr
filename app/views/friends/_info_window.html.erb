@@ -1,6 +1,7 @@
 <h2><%= friend.name %></h2>
 <%= cl_image_tag friend.photo.key, height: 150, width: 200, crop: :fill, class: "card-img-top" %>
+<br><br>
 <p><%= friend.description %></p>
- <%= link_to "View", friend_path(friend)  %>
+ <%= link_to "View", friend_path(friend), { :class=>"btn btn-primary btn-lg btn-block" } %>
 
 

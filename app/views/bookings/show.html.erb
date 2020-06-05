@@ -1,22 +1,45 @@
-<div class="row justify-content-center mt-5">
-  <div class="col-sm-12 col-md-6 mt-3 card">
-    <h5 class="card-title text-center mt-3"><strong>Booking Details</strong></h5>
-    <div class="card-info">
-      <b><p>Booked with:  <%= @booking.friend.name %></p></b>
-        <p>Booking status : <%= @booking.status.capitalize %></p>
-        <p>Booking Starts :  <%= @booking.start_time.strftime("#{@booking.start_time.day.ordinalize} %B %-l.%M%P") %></p>
-        <p>Booking Ends : <%= @booking.end_time.strftime("#{@booking.start_time.day.ordinalize} %B %-l.%M%P")  %></p>
-        <p>Total Session Cost :  <em>$<%= @booking.total_price %></em></p>
-        <p>Friend listed by : <%= link_to @booking.friend.user.first_name + " " + @booking.friend.user.last_name , dashboard_path %></p>
 
-        <div class = "d-flex justify-content-around">
-        <%= link_to "Back to dashboard", dashboard_path, { :class=>"btn btn-primary" }  %>
-        <%= link_to "Back to booking page", my_listings_path, { :class=>"btn btn-primary" }  %>
-        </div>
+
+<div class=" container align-items-center mt-5 mb-5">
+  <div>
+   <p> <%= link_to "Back to dashboard", dashboard_path  %></p>
+   <p><%= link_to "Back to booking page", my_listings_path %></p>
+  </div>
+
+
+  <div class="text-center">
+    <h2>Booking Details</h2>
+  </div>
+  <div class="row justify-content-md-center mt-3 mb-3">
+
+    <div class="card">
+     <%= cl_image_tag @booking.friend.photo.key, height: 300, width: 400, crop: :fill %>
+   <!--  <img height="350" width="100" class="card-img-top" src="http://res.cloudinary.com/daqhmzr2j/image/upload/c_fill,h_350,w_350/emcxas671ze805h9vud48inb459m"> -->
+
     </div>
 
+    <div class="col-md-6 flex-column justify-space-around">
+      <div class="card mb-3 text-align-center">
+        <div class="card-body">
+          <h4 class="card-title text-center"><b><p>Booked with  <%= @booking.friend.name %></p></b></h4>
+            <p>Booking Starts :  <%= @booking.start_time.strftime("#{@booking.start_time.day.ordinalize} %B %-l.%M%P") %></p>
+            <p>Booking Ends : <%= @booking.end_time.strftime("#{@booking.start_time.day.ordinalize} %B %-l.%M%P")  %></p>
+            <p>Total Session Cost :  <em>$<%= @booking.total_price %></em></p>
+            <p>Friend listed by : <%= link_to @booking.friend.user.first_name + " " + @booking.friend.user.last_name , dashboard_path %></p>
+        </div>
+       </div>
+      <div class="card border-info text-warning">
+        <div class="card-body">
+         <p class="card-title">Pending Confirmation</p>
+         <p class="card-text">Please wait for approval....</p>
+       </div>
+      </div>
+    </div>
   </div>
 </div>
 
+<div class="text-center">
+  <h4>Thanks for your booking. We will send you an e-mail confirmation shortly.</h4>
+</div>
 
 

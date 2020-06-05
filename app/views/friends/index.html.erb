@@ -1,4 +1,4 @@
-<h1>Browse friends</h1>
+<h1 class="text-center">Find a friend for any occasion</h1>
 <div class="">
   <%= render 'search_bar' %>
   <div id="map"
@@ -15,17 +15,18 @@
         <div class="card-body">
           <h5 class="card-title"><%= friend.name %></h5>
           <p class="card-text"><%= friend.description %></p>
-          <p class="card-text">$<%= friend.price %> per hour <i class="fas fa-map-marker">  </i><%=  friend.location %></p>
-          <%= link_to "View", friend_path(friend), { :class=>"btn btn-primary" } %>
+          <p class="card-text">$<%= friend.price %> per hour</p>
+          <p> <i class="fas fa-map-marker"> </i> <%=  friend.location %></p>
+          <%= link_to "View", friend_path(friend), { :class=>"btn btn-primary btn-lg btn-block" } %>
         </div>
       </div>
     <% end %>
-    </div>
-   <div class="card">
+    <div class="card mx-3 mb-3 shadow mb-5 bg-white rounded">
     <div class="card-body">
       <h5 class="card-title">List a friend</h5>
       <p class="card-text">Have a friend you'd like to list?</p>
-      <%= link_to "Add a friend", new_friend_path, { :class=>"btn btn-primary" }  %>
+      <%= link_to "Add a friend", new_friend_path, { :class=>"btn btn-primary btn-lg btn-block" }  %>
+    </div>
     </div>
   </div>
   </div>
