@@ -14,21 +14,15 @@
             <% end %></li>
           <li class="list-group-item"><p>Price: <%= @friend.price %></p></li>
           <li class="list-group-item"><p>Location: <%= @friend.location  %></li>
-
-          <li class="list-group-item"><p>Reviews</li>
-             <div class="text-center mt-3">
+          <li class="list-group-item">
             <% @friend.reviews.each do |review|   %>
-               <p><%= review.content %></p><p>
+               <p>Review: <%= review.content %></p>
                 <p>Rating : <%= review.rating %></p>
-
-              <% end %>
-            </div>
+              <% end %></li>
         </ul>
         <div class="card-body">
-
-          <%= link_to "Book Now", new_friend_booking_path(@friend)  %>
-
-        </div>
+        <%= link_to "Book Now", new_friend_booking_path(@friend)  %>
+       </div>
       </div>
   </div>
   <%= render 'calender', bookings: @friend.bookings %>

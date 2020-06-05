@@ -228,7 +228,7 @@ end
 
 puts 'Creating Reviews'
 comments = ["Great Service!", "Very dissapointing", "I want my money back!",
- "Fine, I guess", "That guy is legend"," that guy disgraced me", "What a jerk",
+ "Fine, I guess", "That guy is legend"," that guy disgraced me",
   "Sweetest fake friend ever", "poor fella", "childish person", "not worth it", "I cant wait to meet with her again",
   "creepy fella", "10 / 10" ,"Mentally sick" , "call himself drug addict", "dont book ,save your money!!"]
 booking_set.each do |booking|
