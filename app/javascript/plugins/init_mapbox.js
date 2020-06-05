@@ -14,7 +14,7 @@ const initMapbox = () => {
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
     const map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/georgiebrown/ckb08uawl0irm1ip4ztz870ut',
+      style: 'mapbox://styles/georgiebrown/ckb1j8b5709cs1inr1g8vb22x',
 
     });
       const markers = JSON.parse(mapElement.dataset.markers);
@@ -34,8 +34,8 @@ const initMapbox = () => {
       .addTo(map);
 
   });
-  map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
-                                      mapboxgl: mapboxgl }));
+  // map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
+  //                                     mapboxgl: mapboxgl }));
   fitMapToMarkers(map, markers);
   }
 };
