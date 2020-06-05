@@ -14,7 +14,7 @@
         <%= link_to "See this booking", booking_path(booking), { :class=>"btn btn-primary btn-lg btn-block mb-5" } %>
       <% end %>
     </div>
-      <%= link_to "Edit My Friend", edit_friend_path(friend), { :class=>"btn btn-warning btn-lg btn-block mt-5" } %>
+      <%= link_to "Edit My Friend", edit_friend_path(friend), { :class=>"btn btn-warning btn-lg btn-block mt-3 rounded-pill" } %>
       <br>
       <%= link_to "Delete Friend", friend_path(friend), method: :delete %>
 
@@ -22,4 +22,4 @@
   <% end %>
 </div>
 
-<%= link_to "Back to the your dashboard", dashboard_path, { :class=>"btn btn-primary btn-lg btn-block mt-5" } %>
+<%= link_to "Back to the your dashboard", dashboard_path, { :class=>"btn btn-primary btn-lg btn-block mt-5 rounded-pill" } %>
