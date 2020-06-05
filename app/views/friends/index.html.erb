@@ -16,7 +16,7 @@
           <h5 class="card-title"><%= friend.name %></h5>
           <p class="card-text"><%= friend.description %></p>
           <p class="card-text">$<%= friend.price %> per hour <i class="fas fa-map-marker"> </i><%=  friend.location %></p>
-          <%= link_to "View", friend_path(friend)  %>
+          <%= link_to "View", friend_path(friend), { :class=>"btn btn-primary rounded-pill" } %>
         </div>
       </div>
     <% end %>
@@ -25,7 +25,7 @@
     <div class="card-body">
       <h5 class="card-title">List a friend</h5>
       <p class="card-text">Have a friend you'd like to list?</p>
-      <%= link_to "Add a friend", new_friend_path  %>
+      <%= link_to "Add a friend", new_friend_path, { :class=>"btn btn-primary rounded-pill" }  %>
     </div>
   </div>
   </div>

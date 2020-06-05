@@ -6,8 +6,9 @@
     <div class="card-body">
       <h5 class="card-title"><%= link_to "Booking with #{booking.friend.name}", booking_path(booking) %></h5>
       <p>Booking status : <%= booking.status.capitalize %></p>
-        <p>Booking Starts :  <%= booking.start_time.strftime("#{booking.start_time.day.ordinalize} %B %-l.%M%P") %></p>
-        <p>Booking Ends : <%= booking.end_time.strftime("#{booking.start_time.day.ordinalize} %B %-l.%M%P")  %></p>
+      <p>Booking Starts :  <%= booking.start_time.strftime("#{booking.start_time.day.ordinalize} %B %-l.%M%P") %></p>
+      <p>Booking Ends : <%= booking.end_time.strftime("#{booking.start_time.day.ordinalize} %B %-l.%M%P")  %></p>
+      <%= cl_image_tag booking.friend.photo.key, height: 350, width: 350, crop: :fill, class: "card-img-top" %>
       <div class = "d-flex justify-content-center mb-1">
       <%=  link_to "Leave a Review",  new_booking_review_path(booking), { :class=>"btn btn-primary rounded-pill align-items-center" }  %>
     </div>

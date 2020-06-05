@@ -1,8 +1,8 @@
 <div class="row justify-content-center mt-5">
-    <div class="col-sm-12 col-md-6 mt-3 card">
-      <h5 class="card-title text-center mt-3"><strong>Booking Details</strong></h5>
-      <div class="card-info">
-        <b><p>Booking with:  <%= @booking.friend.name %></p></b>
+  <div class="col-sm-12 col-md-6 mt-3 card">
+    <h5 class="card-title text-center mt-3"><strong>Booking Details</strong></h5>
+    <div class="card-info">
+      <b><p>Booked with:  <%= @booking.friend.name %></p></b>
         <p>Booking status : <%= @booking.status.capitalize %></p>
         <p>Booking Starts :  <%= @booking.start_time.strftime("#{@booking.start_time.day.ordinalize} %B %-l.%M%P") %></p>
         <p>Booking Ends : <%= @booking.end_time.strftime("#{@booking.start_time.day.ordinalize} %B %-l.%M%P")  %></p>
@@ -13,11 +13,9 @@
         <%= link_to "Back to dashboard", dashboard_path, { :class=>"btn btn-primary" }  %>
         <%= link_to "Back to booking page", my_listings_path, { :class=>"btn btn-primary" }  %>
         </div>
-
-        </div>
-
-      </div>
     </div>
+
+  </div>
 </div>
 
 
