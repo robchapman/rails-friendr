@@ -13,10 +13,12 @@
       <div class="card mx-3 mb-3 shadow mb-5 bg-white rounded" style="width: 300px;">
         <%= cl_image_tag friend.photo.key, height: 350, width: 350, crop: :fill, class: "card-img-top" %>
         <div class="card-body">
-          <h5 class="card-title"><%= friend.name %></h5>
-          <p class="card-text"><%= friend.description %></p>
-          <p class="card-text">$<%= friend.price %> per hour</p>
+          <div class="card-text-container">
+            <h5 class="card-title"><%= friend.name %></h5>
+            <p class="card-text"><%= friend.description %></p>
+            <p class="card-text">$<%= friend.price %> per hour</p>
           <p> <i class="fas fa-map-marker"> </i> <%=  friend.location %></p>
+          </div>
           <%= link_to "View", friend_path(friend), { :class=>"btn btn-primary btn-lg btn-block" } %>
         </div>
       </div>
