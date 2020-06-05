@@ -2,11 +2,11 @@
 
 <div class="cards-container">
   <% @bookings.each do |booking| %>
-  <div class="card mx-3 mb-3" style="width: 1000px;">
+  <div class="card mb-3 p-1" style="width: 1000px;">
     <div class="row no-gutters">
 
       <div class="col-md-3 my-auto">
-        <div style="border:2px solid black;">
+        <div>
 
           <%= cl_image_tag booking.friend.photo.key, height: 200, width: 246, crop: :fill %>
         </div>
@@ -16,9 +16,9 @@
         <div class="card-body d-flex justify-content-between">
           <div>
             <h5 class="card-title" style="font-size:30px;"><%= link_to "Booking with #{booking.friend.name}", booking_path(booking) %></h5>
-            <p>Booking status : <%= booking.status.capitalize %></p>
-            <p>Booking Starts :  <%= booking.start_time.strftime("#{booking.start_time.day.ordinalize} %B %-l.%M%P") %></p>
-            <p>Booking Ends : <%= booking.end_time.strftime("#{booking.start_time.day.ordinalize} %B %-l.%M%P")  %></p>
+            <p>Status : <%= booking.status.capitalize %></p>
+            <p>Starts :  <%= booking.start_time.strftime("#{booking.start_time.day.ordinalize} %B %-l.%M%P") %></p>
+            <p>Ends : <%= booking.end_time.strftime("#{booking.start_time.day.ordinalize} %B %-l.%M%P")  %></p>
           </div>
 
           <div class = "ml-5" style="margin-top: 7rem;">
