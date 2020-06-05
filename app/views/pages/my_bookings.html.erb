@@ -8,12 +8,12 @@
       <%= cl_image_tag booking.friend.photo.key, height: 350, width: 350, crop: :fill, class: "card-img-top" %>
       <p><%= booking.start_time %></p>
       <div class = "d-flex justify-content-center mb-1">
-      <%=  link_to "Review",  new_booking_review_path(booking), { :class=>"btn btn-primary rounded-pill align-items-center" }  %>
+      <%=  link_to "Review",  new_booking_review_path(booking), { :class=>"btn btn-primary rounded-pill align-items-center rounded-pill" }  %>
     </div>
     </div>
   </div>
   <% end %>
 </div>
 
-<%= link_to "Back to the your dashboard", dashboard_path, { :class=>"btn btn-primary btn-lg btn-block mt-5" } %>
+<%= link_to "Back to the your dashboard", dashboard_path, { :class=>"btn btn-primary btn-lg btn-block mt-5 rounded-pill" } %>
 
