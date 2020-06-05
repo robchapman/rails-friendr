@@ -28,7 +28,7 @@
           </thead>
           <tbody>
             <% num = 1  %>
-            <% current_user.bookings.each do |booking|  %>
+            <% current_user.bookings.order("start_time ASC").each do |booking|  %>
               <tr>
                 <th scope="row"> <%= num  %></th>
                 <td> <%= link_to "#{booking.friend.name}", booking_path(booking) %></td>
