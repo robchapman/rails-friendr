@@ -1,3 +1,14 @@
 .card-img-top{
-  border: 2px solid black !important;
+ border: 6px solid white;
+
+}
+
+.card img{
+  opacity: 0.8;
+}
+
+  .card img:hover{
+  opacity: 1.0;
+  transition: 1s;
+
 }
