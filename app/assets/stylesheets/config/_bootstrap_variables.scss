@@ -11,7 +11,7 @@ $font-size-base: 1rem;
 
 // Colors
 $body-color: $gray;
-$primary:    $blue;
+$primary:    $friends-blue;
 $success:    $green;
 $info:       $yellow;
 $danger:     $red;
@@ -24,13 +24,13 @@ $border-radius-sm: 2px;
 
 // Override other variables below!
 .btn-primary{
- background: #759EB8 !important;
- border-color: white !important;
+ // background: #759EB8 !important;
+ // border-color: white !important;
 
 }
 
 .btn-warning{
-  border-color: white !important;
+  // border-color: white !important;
 }
 
 .btn-warning:hover{
@@ -40,10 +40,10 @@ $border-radius-sm: 2px;
 }
 
 .btn-primary:hover{
-  color: #a7c7ea !important;
+  color: $friends-blue !important;
   background: white !important;
   transition: 0.1s;
-  border: 2px solid #a7c7ea !important;
+
 }
 
 
