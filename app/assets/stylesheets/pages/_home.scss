@@ -4,7 +4,7 @@
 
 .landing-page-side-bar{
  background: rgb(185,212,242);
-background: linear-gradient(90deg, rgba(185,212,242,1) 0%, rgba(201,222,244,1) 25%, rgba(255,205,132,1) 75%);
+background: linear-gradient(90deg, black 0%, $friends-red 5%,  $friends-yellow 25%);
 }
 
 .landing-page h1 {
@@ -13,7 +13,7 @@ background: linear-gradient(90deg, rgba(185,212,242,1) 0%, rgba(201,222,244,1) 2
 }
 
 body{
-  background: #c9def4 !important;
+  background: $friends-yellow !important;
 }
 
 h1 {
